@@ -1,0 +1,32 @@
+{
+  "name": "dantalion-web-demo",
+  "version": "0.20.0",
+  "description": "The playground web app that calculates the personality from the birthday",
+  "keywords": [
+    "ba-zi",
+    "bazi",
+    "birthday",
+    "chinese-astrology",
+    "console",
+    "console-app",
+    "four-pillars",
+    "library",
+    "self-assessment",
+    "terminal-app",
+    "ziweidoushu",
+    "zodiac"
+  ],
+  "homepage": "https://kurone-kito.github.io/dantalion/",
+  "bugs": {
+    "url": "https://github.com/kurone-kito/dantalion-web-demo/issues"
+  },
+  "license": "MIT",
+  "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
+  "files": [],
+  "repository": "github:kurone-kito/dantalion-web-demo",
+  "engines": {
+    "node": ">=8.18.0",
+    "npm": ">=8.18.0"
+  },
+  "private": true
+}

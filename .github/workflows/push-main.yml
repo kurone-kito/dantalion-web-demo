@@ -13,4 +13,7 @@ jobs:
       - name: Use the Node.js specified version
         uses: actions/setup-node@v2
         with:
+          cache: npm
           node-version-file: .node-version
+      - name: Install the dependencies
+        run: npm ci

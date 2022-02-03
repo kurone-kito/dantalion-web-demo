@@ -1,5 +1,10 @@
 {
-  "cSpell.ignorePaths": [".git/objects", ".vscode"],
-  "cSpell.words": ["grimoire", "kito", "kuroné"],
+  "cSpell.ignorePaths": [
+    ".git/objects",
+    ".vscode",
+    "node_modules",
+    "package-lock.json"
+  ],
+  "cSpell.words": ["bazi", "grimoire", "kito", "kuroné", "ziweidoushu"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }
