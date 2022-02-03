@@ -10,3 +10,7 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+      - name: Use the Node.js specified version
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: .node-version
