@@ -1,0 +1,12 @@
+name: Actions on pushed main branch
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
