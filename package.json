@@ -24,6 +24,9 @@
   "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
   "files": [],
   "repository": "github:kurone-kito/dantalion-web-demo",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
   "engines": {
     "node": "^17.4.0",
     "npm": "^8.3.1"
