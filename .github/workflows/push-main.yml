@@ -15,5 +15,7 @@ jobs:
         with:
           cache: npm
           node-version-file: .node-version
-      - name: Install the dependencies
+      - env:
+          HUSKY: 0
+        name: Install the dependencies
         run: npm ci

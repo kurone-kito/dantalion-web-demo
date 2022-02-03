@@ -24,7 +24,11 @@
   "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
   "files": [],
   "repository": "github:kurone-kito/dantalion-web-demo",
+  "scripts": {
+    "prepare": "husky install"
+  },
   "devDependencies": {
+    "husky": "^8.0.1",
     "typescript": "^4.8.2"
   },
   "engines": {
