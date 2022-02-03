@@ -24,16 +24,23 @@
   "repository": "github:kurone-kito/dantalion-web-demo",
   "license": "MIT",
   "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
-  "files": [],
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "echo \"Dry run: build\"",
+    "build:re": "concurrently -m 1 \"npm:clean\" \"npm:build\"",
+    "clean": "rimraf \"*.tgz\" \".eslintcache\" \"dist\"",
     "lint": "npm run -s lint:eslint:check && npm run -s lint:prettier:check",
     "lint:eslint:check": "eslint --cache --format codeframe \"./**/*\"",
     "lint:eslint:fix": "npm run -s lint:eslint:check -- --fix",
     "lint:fix": "npm run -s lint:eslint:fix && npm run -s lint:prettier:fix",
     "lint:prettier:check": "npm run -s prettier -- -cu",
     "lint:prettier:fix": "npm run -s prettier -- -uw",
+    "prepack": "npm run -s build:re",
     "prepare": "husky install",
     "prettier": "prettier --cache --loglevel=warn \"./**/*\"",
+    "start": "echo \"Dry run: start\"",
     "test": "npm run -s lint"
   },
   "dependencies": {
@@ -45,6 +52,7 @@
     "@types/react": "^18.0.17",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
+    "concurrently": "^7.3.0",
     "eslint": "^8.23.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -67,6 +75,7 @@
     "prettier-plugin-sort-json": "^0.0.3",
     "pretty-quick": "^3.1.3",
     "react-dom": "^18.2.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.8.2",
     "typescript-eslint-language-service": "^5.0.0"
   },
