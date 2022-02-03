@@ -15,4 +15,7 @@ jobs:
       - name: Use the Node.js version ${{ env.NODE_VERSION }} specified in the workflow
         uses: actions/setup-node@v2
         with:
+          cache: npm
           node-version: ${{ env.NODE_VERSION }}
+      - name: Install the dependencies
+        run: npm ci
