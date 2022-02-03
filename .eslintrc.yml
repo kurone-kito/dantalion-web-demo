@@ -46,7 +46,9 @@ rules:
   import/no-extraneous-dependencies:
     - error
     - devDependencies:
+        - '.storybook/main.js'
         - '**/*.config.?([cm])[jt]s'
+        - '**/*.stories.?([cm])[jt]s?(x)'
   import/order: warn
   jsdoc/require-param-type: 'off'
   jsdoc/require-returns-type: 'off'

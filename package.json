@@ -29,16 +29,20 @@
   "main": "./dist/index.html",
   "repository": "github:kurone-kito/dantalion-web-demo",
   "scripts": {
-    "build": "next build && next export -o dist",
+    "build": "concurrently -m 1 \"npm:build:storybook\" \"npm:build:next\"",
+    "build:next": "next build && next export -o dist",
     "build:re": "concurrently -m 1 \"npm:clean\" \"npm:build\"",
-    "clean": "rimraf \"*.tgz\" \".eslintcache\" \".next\" \"dist\"",
+    "build:storybook": "build-storybook --modern -o public/storybook",
+    "clean": "rimraf \"*.tgz\" \".eslintcache\" \".next\" \"dist\" \"public/storybook\"",
     "lint": "eslint --cache -f codeframe \"./**/*\"",
     "lint:fix": "npm run -s lint -- --fix",
     "prepare": "husky install",
     "prepack": "npm run -s build:re",
     "serve": "serve dist",
-    "start": "next dev",
-    "test": "npm run -s lint"
+    "start": "concurrently -k \"npm:watch:*\"",
+    "test": "npm run -s lint",
+    "watch:next": "next dev",
+    "watch:storybook": "start-storybook -p 6006 --ci --modern"
   },
   "dependencies": {
     "next": "^12.0.10",
@@ -47,6 +51,17 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
+    "@storybook/addon-a11y": "^6.4.18",
+    "@storybook/addon-docs": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-interactions": "^6.4.18",
+    "@storybook/addons": "^6.4.18",
+    "@storybook/builder-webpack5": "^6.4.18",
+    "@storybook/core-common": "^6.4.18",
+    "@storybook/manager-webpack5": "^6.4.18",
+    "@storybook/react": "^6.4.18",
+    "@storybook/testing-library": "^0.0.8",
+    "@types/babel__core": "^7.1.18",
     "@types/react": "^17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
@@ -74,8 +89,10 @@
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
     "serve": "^13.0.2",
+    "storybook-addon-turbo-build": "^1.0.1",
     "typescript": "^4.5.5",
-    "typescript-eslint-language-service": "^5.0.0"
+    "typescript-eslint-language-service": "^5.0.0",
+    "webpack": "^5.68.0"
   },
   "engines": {
     "node": "^17.4.0",
