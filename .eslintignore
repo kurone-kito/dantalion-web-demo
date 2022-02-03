@@ -342,3 +342,6 @@ LICENSE
 # TypeScript
 tsconfig.json
 tsconfig.*.json
+
+### StorybookJs ###
+*.mdx
