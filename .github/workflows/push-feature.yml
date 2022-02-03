@@ -1,0 +1,13 @@
+name: Actions on pushed feature branch
+on:
+  push:
+    branches:
+      - "*"
+      - "!master"
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
