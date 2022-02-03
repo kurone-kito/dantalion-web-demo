@@ -2,14 +2,14 @@ name: Actions on pushed feature branch
 on:
   push:
     branches:
-      - "*"
-      - "!master"
+      - '*'
+      - '!master'
 jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
     env:
-      NODE_VERSION: "17"
+      NODE_VERSION: '17'
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -20,3 +20,5 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install the dependencies
         run: npm ci
+      - name: Testing the code
+        run: npm test

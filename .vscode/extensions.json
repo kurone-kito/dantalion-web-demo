@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "davidanson.vscode-markdownlint",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode"
   ]
 }
