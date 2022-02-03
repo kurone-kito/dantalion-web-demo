@@ -9,10 +9,13 @@ extends:
   - plugin:editorconfig/noconflict
   - plugin:jsdoc/recommended
   - eslint:recommended
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - plugin:jsx-a11y/recommended
   - plugin:import/recommended
   - plugin:import/typescript
   - plugin:@typescript-eslint/recommended
-  - airbnb-typescript/base
+  - airbnb-typescript
   - plugin:prettier/recommended
 overrides:
   - files:
@@ -27,6 +30,7 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
     impliedStrict: true
+    jsx: true
   extraFileExtensions:
     - '.cjs'
     - '.cts'
@@ -47,6 +51,8 @@ rules:
   import/order: warn
   jsdoc/require-param-type: 'off'
   jsdoc/require-returns-type: 'off'
+  react/prop-types: 'off'
+  react/react-in-jsx-scope: 'off'
   sort-imports:
     - warn
     - ignoreDeclarationSort: true
@@ -54,3 +60,5 @@ settings:
   import/resolver:
     typescript:
       alwaysTryTypes: true
+  react:
+    version: detect
