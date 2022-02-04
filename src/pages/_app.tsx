@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import type { VFC } from 'react';
-import 'tailwindcss/tailwind.css';
+import { GlobalStyles } from 'twin.macro';
 
 /**
  * The app root component
@@ -11,7 +11,10 @@ import 'tailwindcss/tailwind.css';
  * @returns The app root component.
  */
 const App: VFC<AppProps> = ({ Component, pageProps }) => (
-  <Component {...pageProps} />
+  <>
+    <GlobalStyles />
+    <Component {...pageProps} />
+  </>
 );
 App.displayName = 'App';
 

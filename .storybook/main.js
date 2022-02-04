@@ -37,6 +37,7 @@ module.exports = {
   babel: ({ plugins = [], presets = [], ...options }) => ({
     ...options,
     plugins: [
+      'babel-plugin-twin',
       ...plugins,
       ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
     ],
