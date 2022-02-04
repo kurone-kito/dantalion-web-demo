@@ -34,12 +34,13 @@ module.exports = {
     },
   ],
   /** @type {(options: TransformOptions) => Promisable<TransformOptions>} */
-  babel: ({ plugins = [], ...options }) => ({
+  babel: ({ plugins = [], presets = [], ...options }) => ({
     ...options,
     plugins: [
       ...plugins,
       ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
     ],
+    presets: [...presets, '@emotion/babel-preset-css-prop'],
   }),
   core: { builder: 'webpack5' },
   features: {
