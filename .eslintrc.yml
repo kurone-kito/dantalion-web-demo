@@ -25,6 +25,13 @@ overrides:
       - plugin:json/recommended
     files:
       - '*.json'
+  - env:
+      jest/globals: true
+      node: true
+    extends:
+      - plugin:jest/recommended
+    files:
+      - '*.spec.?([cm])[jt]s?(x)'
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
