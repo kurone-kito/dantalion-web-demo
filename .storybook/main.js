@@ -9,6 +9,8 @@
  * @typedef {import("type-fest").Promisable<T>} Promisable
  */
 
+const postcss = require('postcss');
+
 /**
  * the configuration for the storybook
  *
@@ -19,6 +21,10 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-interactions',
+    {
+      name: '@storybook/addon-postcss',
+      options: { postcssLoaderOptions: { implementation: postcss } },
+    },
     {
       name: 'storybook-addon-turbo-build',
       options: {
