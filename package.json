@@ -55,10 +55,13 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@kurone-kito/dantalion-core": "^0.19.2",
+    "@kurone-kito/dantalion-i18n": "^0.19.2",
     "classnames": "^2.3.1",
     "next": "^12.2.5",
     "qs": "^6.11.0",
     "react": "^18.2.0",
+    "react-i18next": "^11.15.3",
     "react-markdown": "^8.0.3",
     "tailwindcss": "^3.1.8",
     "twin.macro": "^2.8.2"
