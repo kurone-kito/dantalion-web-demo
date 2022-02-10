@@ -64,7 +64,8 @@
     "react-i18next": "^11.15.3",
     "react-markdown": "^8.0.3",
     "tailwindcss": "^3.1.8",
-    "twin.macro": "^2.8.2"
+    "twin.macro": "^2.8.2",
+    "usehooks-ts": "^2.6.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.1",

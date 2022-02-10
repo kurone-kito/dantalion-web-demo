@@ -35,7 +35,7 @@ const styles = tw`
       flex-grow
       dark:nm-flat-gray-600
       hover:(nm-flat-gray-50 dark:nm-flat-gray-800)
-      sm:w-3/4
+      sm:w-full
       [& > select]:(
         appearance-none
         bg-transparent
