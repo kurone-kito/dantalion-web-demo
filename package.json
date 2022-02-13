@@ -65,6 +65,7 @@
     "react-markdown": "^8.0.3",
     "tailwindcss": "^3.1.8",
     "twin.macro": "^2.8.2",
+    "unstated-next": "^1.1.0",
     "usehooks-ts": "^2.6.0"
   },
   "devDependencies": {
