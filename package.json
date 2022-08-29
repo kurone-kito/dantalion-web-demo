@@ -1,6 +1,7 @@
 {
   "name": "dantalion-web-demo",
   "version": "0.20.0",
+  "private": true,
   "description": "The playground web app that calculates the personality from the birthday",
   "keywords": [
     "ba-zi",
@@ -20,10 +21,10 @@
   "bugs": {
     "url": "https://github.com/kurone-kito/dantalion-web-demo/issues"
   },
+  "repository": "github:kurone-kito/dantalion-web-demo",
   "license": "MIT",
   "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
   "files": [],
-  "repository": "github:kurone-kito/dantalion-web-demo",
   "scripts": {
     "lint": "npm run -s prettier -- -cu",
     "lint:fix": "npm run -s prettier -- -uw",
@@ -45,6 +46,5 @@
   "engines": {
     "node": ">=8.18.0",
     "npm": ">=8.18.0"
-  },
-  "private": true
+  }
 }
