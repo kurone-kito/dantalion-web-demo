@@ -19,3 +19,5 @@ jobs:
           HUSKY: 0
         name: Install the dependencies
         run: npm ci
+      - name: Linting the code
+        run: npm run lint

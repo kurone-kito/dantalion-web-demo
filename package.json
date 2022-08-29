@@ -25,12 +25,21 @@
   "files": [],
   "repository": "github:kurone-kito/dantalion-web-demo",
   "scripts": {
-    "prepare": "husky install"
+    "lint": "npm run -s prettier -- -cu",
+    "lint:fix": "npm run -s prettier -- -uw",
+    "prepare": "husky install",
+    "prettier": "prettier --cache --loglevel=warn \"./**/*\"",
+    "test": "npm run -s lint"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.1",
     "@commitlint/config-conventional": "^17.1.0",
     "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "prettier-plugin-sh": "^0.12.8",
+    "prettier-plugin-sort-json": "^0.0.3",
+    "pretty-quick": "^3.1.3",
     "typescript": "^4.8.2"
   },
   "engines": {

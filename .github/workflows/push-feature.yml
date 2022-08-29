@@ -2,8 +2,8 @@ name: Actions on pushed feature branch
 on:
   push:
     branches:
-      - "*"
-      - "!master"
+      - '*'
+      - '!master'
 jobs:
   build:
     name: Build and test
@@ -20,3 +20,5 @@ jobs:
           HUSKY: 0
         name: Install the dependencies
         run: npm ci
+      - name: Testing the code
+        run: npm test
