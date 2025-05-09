@@ -1,8 +1,12 @@
 name: The CI workflow on push
 on:
   push:
+    branches:
+      - '*'
+      - '!main'
 permissions:
   contents: read
+  pull-requests: write
 jobs:
   build:
     defaults:
@@ -22,7 +26,7 @@ jobs:
       - name: Pre-prepare the Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: .node-version
       - name: Install the latest corepack explicitly
         run: npm install --force -g corepack@latest
       - name: Enable the corepack
@@ -31,7 +35,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: ${{ !env.ACT && 'pnpm' || '' }}
-          node-version: ${{ matrix.node-version }}
+          node-version-file: .node-version
       - env:
           HUSKY: 0
         name: Install the dependencies
@@ -40,11 +44,6 @@ jobs:
         run: pnpm run test
     strategy:
       matrix:
-        node-version:
-          - 20.x
-          - 22.x
-          - 23.x
-          - 24.x
         platform:
           - os: ubuntu-latest
             shell: bash

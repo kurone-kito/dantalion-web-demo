@@ -1,60 +1,37 @@
-# 📄 PNPM project template
+# 🦁 Dantalion: web demo
 
-## Features
+“Dantalion” is the seventy-first demon in the demonological grimoire,
+_[the Lesser Key of Solomon](https://en.wikipedia.org/wiki/The_Lesser_Key_of_Solomon)_.
+He teaches all kinds of academic knowledge, but he can also read and
+manipulate others’ hearts.
 
-- PNPM
-- TypeScript
-- Biome
-- Commitlint with Husky
-- Visual Studio Code / Vim ready
-- CI configurations
-  - CodeRabbit
-  - Dependabot
-  - GitHub Actions
+If you can predict the other person’s character, you can increase the
+possibility of controlling the other person’s will. This web app provides
+a feature that infers the personality details from the specified birthday.
+By using this package, you can quickly implement birthday divination in
+your Node.js apps. Its calculation is using the method of
+_Four Pillars of Destiny (Ba-Zi)_.
 
-## System Requirements
+This repository is a web demo for the package.
+If you want to use the library, see the
+[library repository](https://github.com/kurone-kito/dantalion)
 
-- Node.js: Any of the following versions
-  - Iron LTS (`^20.11.x`)
-  - Jod LTS or latest (`>=22.x.x`)
+## Note
 
-## Install the dependencies
+- This package can specify a birthday within the range from February 1,
+  1873, to December 31, 2050.
+- This package does not consider time zones. If you are not satisfied with
+  the inferred personality, moving the date back and forth may solve.
 
-```sh
-corepack enable
-pnpm install
-```
+## Usage
 
-## Linting
+- Modern browser
 
-```sh
-pnpm run lint
-pnpm run lint:fix # Lint and auto-fix
-```
+## See also
 
-## Testing
+- [The library part repository](https://github.com/kurone-kito/dantalion)
+- Wikipedia: [Four Pillars of Destiny (Ba-Zi)](https://en.wikipedia.org/wiki/Four_Pillars_of_Destiny)
 
-```sh
-pnpm run test
-```
-
-Currently, the command works as an alias for the `pnpm run lint` command.
-
-## Cleaning
-
-```sh
-pnpm run clean
-```
-
-## Rules for Development
-
-Welcome to contribute to this repository! For more details,
-please refer to [CONTRIBUTING.md](.github/CONTRIBUTING.md).
-
-Introduce commit message validation at commit time.
-The “**[Conventional Commits](https://www.conventionalcommits.org/ja/)**”
-rule is applied to discourage committing messages that violate conventions.
-
-## LICENSE
+## License
 
 [MIT](https://opensource.org/licenses/MIT")

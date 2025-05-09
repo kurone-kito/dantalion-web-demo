@@ -1,12 +1,35 @@
 {
-  "name": "@kurone-kito/pnpm-project-template",
+  "name": "@kurone-kito/dantalion-web-demo",
   "version": "0.1.0",
   "private": true,
-  "description": "The boilerplate project of the Node.js",
-  "keywords": ["boilerplate", "template"],
-  "homepage": "https://github.com/kurone-kito/pnpm-project-template#readme",
-  "bugs": "https://github.com/kurone-kito/pnpm-project-template/issues",
-  "repository": "github:kurone-kito/pnpm-project-template",
+  "description": "Dantalion: official web demo site. Dantalion is a self-assessment tool using the Chinese astrology (BaZi).",
+  "keywords": [
+    "ba-zi",
+    "birthday",
+    "cancode",
+    "chinese-astrology",
+    "divination",
+    "four-pillars",
+    "library",
+    "nodejs",
+    "npm-package",
+    "self-assessment",
+    "website",
+    "占い",
+    "四柱推命",
+    "動物占い",
+    "素質論",
+    "生年月日",
+    "誕生日",
+    "命式",
+    "命理",
+    "命理学",
+    "命運",
+    "自己分析"
+  ],
+  "homepage": "https://github.com/kurone-kito/dantalion-web-demo#readme",
+  "bugs": "https://github.com/kurone-kito/dantalion-web-demo/issues",
+  "repository": "github:kurone-kito/dantalion-web-demo",
   "license": "MIT",
   "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
   "type": "module",
@@ -43,7 +66,7 @@
   },
   "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977",
   "engines": {
-    "node": "^20.11 || >=22"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
