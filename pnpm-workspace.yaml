@@ -1,3 +1,5 @@
 onlyBuiltDependencies:
   - '@biomejs/biome'
+  - '@parcel/watcher'
+  - esbuild
   - unrs-resolver

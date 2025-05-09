@@ -1,5 +1,15 @@
 {
-  "compilerOptions": { "noEmit": true },
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "lib": ["DOM", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "target": "ESNext",
+    "types": ["@solidjs/start/env", "vinxi/types/client"]
+  },
+  "exclude": ["*.config.mts", "node_modules"],
   "extends": "@kurone-kito/typescript-config/tsconfig.json",
-  "include": ["./**/*.mjs", "./**/*.mts"]
+  "include": ["./**/*.mjs", "./**/*.mts", "./**/*.tsx"]
 }
