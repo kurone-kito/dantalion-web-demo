@@ -23,6 +23,9 @@ importers:
       solid-js:
         specifier: ^1.9.6
         version: 1.9.6
+      tailwind-merge:
+        specifier: ^3.3.0
+        version: 3.3.0
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.9.4
@@ -54,6 +57,9 @@ importers:
       '@kurone-kito/typescript-config':
         specifier: ^0.18.0-alpha.6
         version: 0.18.0-alpha.6(typescript@5.8.3)
+      '@kurone-kito/vrc-icons-tw':
+        specifier: 0.13.0-alpha.2
+        version: 0.13.0-alpha.2(tailwindcss@4.1.5)
       '@tailwindcss/vite':
         specifier: ^4.1.5
         version: 4.1.5(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))
@@ -932,6 +938,12 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  '@kurone-kito/vrc-icons-tw@0.13.0-alpha.2':
+    resolution: {integrity: sha512-yn8em6D8Sk817oWX74BGv/6edeiGGScz9L9NO/2GZVA/N5iiGsBiREOpZGOvdsb/XtzZdnyjXf33ZQcDEUHBww==}
+    engines: {node: ^20.11 || >=22}
+    peerDependencies:
+      tailwindcss: '>=4.x.x'
 
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -4083,6 +4095,9 @@ packages:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
     engines: {node: '>=18'}
 
+  tailwind-merge@3.3.0:
+    resolution: {integrity: sha512-fyW/pEfcQSiigd5SNn0nApUOxx0zB/dm6UDU/rEwc2c3sX2smWUNbapHv+QRqLGVp9GWX3THIa7MUGPo+YkDzQ==}
+
   tailwindcss@4.1.5:
     resolution: {integrity: sha512-nYtSPfWGDiWgCkwQG/m+aX83XCwf62sBgg3bIlNiiOcggnS1x3uVRDAuyelBFL+vJdOPPCGElxv9DjHJjRHiVA==}
 
@@ -5308,6 +5323,10 @@ snapshots:
   '@kurone-kito/typescript-config@0.18.0-alpha.6(typescript@5.8.3)':
     optionalDependencies:
       typescript: 5.8.3
+
+  '@kurone-kito/vrc-icons-tw@0.13.0-alpha.2(tailwindcss@4.1.5)':
+    dependencies:
+      tailwindcss: 4.1.5
 
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
@@ -8861,6 +8880,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   system-architecture@0.1.0: {}
+
+  tailwind-merge@3.3.0: {}
 
   tailwindcss@4.1.5: {}
 
