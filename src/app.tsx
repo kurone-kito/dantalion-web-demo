@@ -1,7 +1,7 @@
 import { Router } from '@solidjs/router';
 import { FileRoutes } from '@solidjs/start/router';
 import type { Component } from 'solid-js';
-import { Suspense } from 'solid-js';
+import { RootTemplate } from './components/templates/RootTemplate.js';
 import './app.css';
 
 /**
@@ -9,10 +9,7 @@ import './app.css';
  * @returns The component.
  */
 const App: Component = () => (
-  <Router
-    base={import.meta.env.SERVER_BASE_URL}
-    root={(props) => <Suspense>{props.children}</Suspense>}
-  >
+  <Router base={import.meta.env.SERVER_BASE_URL} root={RootTemplate}>
     <FileRoutes />
   </Router>
 );
