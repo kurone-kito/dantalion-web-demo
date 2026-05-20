@@ -1,0 +1,73 @@
+{
+  "name": "@kurone-kito/dantalion-web-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Modernized web demo workspace for dantalion.",
+  "keywords": [
+    "dantalion",
+    "solidjs",
+    "tailwindcss",
+    "web",
+    "workspace"
+  ],
+  "homepage": "https://github.com/kurone-kito/dantalion-web-demo#readme",
+  "bugs": "https://github.com/kurone-kito/dantalion-web-demo/issues",
+  "repository": "github:kurone-kito/dantalion-web-demo",
+  "license": "MIT",
+  "author": "kurone-kito <krone@kit.black> (https://kit.black/)",
+  "type": "module",
+  "files": [],
+  "workspaces": {
+    "packages": [
+      "./packages/*"
+    ]
+  },
+  "scripts": {
+    "build": "pnpm --aggregate-output --if-present --workspace-concurrency=0 -r run build",
+    "clean": "pnpm run --no-bail \"/^clean:.+/\"",
+    "clean:root": "rimraf -g \"*.tgz\" \"*.tsbuildinfo\" coverage node_modules/.cache",
+    "clean:sub": "pnpm --aggregate-output --if-present --parallel --workspace-concurrency=0 -r run clean",
+    "dev": "pnpm --if-present --parallel --stream --workspace-concurrency=Infinity -r run dev",
+    "lint": "pnpm run --stream \"/lint:check:.+/\"",
+    "lint:check:biome": "biome check",
+    "lint:check:cspell": "cspell lint --show-suggestions .",
+    "lint:check:markdown": "markdownlint-cli2 \"**/*.md\"",
+    "lint:fix": "pnpm run --stream \"/(lint:fix:.+|lint:check:cspell)/\"",
+    "lint:fix:biome": "biome check --write",
+    "lint:fix:markdown": "markdownlint-cli2 --fix \"**/*.md\"",
+    "prepare": "husky",
+    "pretest": "pnpm --aggregate-output --if-present --workspace-concurrency=0 -r run build",
+    "publish": "pnpm -r publish --no-git-checks",
+    "publish:next": "pnpm -r publish --tag next --no-git-checks",
+    "test": "pnpm run \"/test:.+/\"",
+    "test:ts": "pnpm --aggregate-output --if-present --workspace-concurrency=0 -r run test:ts",
+    "test:vitest": "NODE_OPTIONS=\"--conditions=browser\" vitest run --coverage --passWithNoTests"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
+    "@cspell/cspell-types": "^10.0.0",
+    "@kurone-kito/biome-config": "^0.23.0-alpha.1",
+    "@kurone-kito/commitlint-config": "^0.23.0-alpha.1",
+    "@kurone-kito/cspell-config": "^0.23.0-alpha.1",
+    "@kurone-kito/lint-staged-config": "^0.23.0-alpha.1",
+    "@kurone-kito/markdownlint-config": "^0.23.0-alpha.1",
+    "@kurone-kito/typescript-config": "^0.22.0-alpha.9",
+    "@vitest/coverage-v8": "^4.1.2",
+    "cspell": "^10.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.4",
+    "markdownlint-cli2": "^0.22.1",
+    "rimraf": "^6.1.3",
+    "typescript": "~6.0.3",
+    "vitest": "^4.1.2"
+  },
+  "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800",
+  "engines": {
+    "node": "^22.22.2 || >=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

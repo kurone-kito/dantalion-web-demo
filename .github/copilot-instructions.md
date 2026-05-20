@@ -53,11 +53,11 @@ treated as authoritative during autonomous execution.
 - Modify community documents without explicit approval.
 - Disable or bypass lint/test gates without justification.
 
-## Bootstrap state
+## Current state
 
-The repository starts from a nearly empty state. Until the workspace
-scaffold lands, the steady-state command set below is the planned target
-and may fail on a fresh clone:
+The workspace scaffold is present and the root command set below is
+available. Application packages will land incrementally under
+`packages/`:
 
 - Install dependencies: `corepack enable && pnpm install --frozen-lockfile`
 - Lint and auto-fix: `pnpm run lint:fix`

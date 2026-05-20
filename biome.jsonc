@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["./node_modules/@kurone-kito/biome-config/biome.json"],
+  "files": {
+    "includes": [
+      ".github/**",
+      ".github/workflows/**",
+      ".github/workflows/**/*.yml",
+      "!**/.*ignore",
+      "!**/biome.json",
+      "!**/package-lock.json",
+      "!**/pnpm-lock.yaml",
+      "!**/yarn.lock"
+    ]
+  }
+}

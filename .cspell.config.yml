@@ -1,0 +1,18 @@
+cache:
+  cacheFormat: universal
+  cacheLocation: node_modules/.cache/cspell/.cspell.cache
+  cacheStrategy: metadata
+  useCache: true
+import:
+  - '@kurone-kito/cspell-config'
+words:
+  - esync
+  - iddVersion
+  - isort
+  - pyproject
+  - pylint
+  - pytest
+  - unreplied
+  - unpushed
+  - waivable
+version: '0.2'
