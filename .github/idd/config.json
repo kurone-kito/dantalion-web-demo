@@ -1,0 +1,26 @@
+{
+  "$schema": "https://kurone-kito.github.io/idd-skill/schemas/policy.schema.json",
+  "iddVersion": "0.1.0",
+  "markerPrefix": "dantalion-web-demo",
+  "mergePolicy": "fully_autonomous_merge",
+  "reviewPolicy": "copilot-advisory",
+  "threadResolutionPolicy": "fast-agent-resolve",
+  "skipIssueAuthorApprovalGate": false,
+  "maintainerApprovalActorPolicy": "owners-and-maintainers-only",
+  "claimTiming": {
+    "staleAge": "PT24H",
+    "heartbeatInterval": "PT12H"
+  },
+  "trustedMarkerActors": ["kurone-kito"],
+  "commands": {
+    "install-deps": "corepack enable && pnpm install --frozen-lockfile",
+    "fix-validate": "pnpm run lint:fix && pnpm run lint",
+    "pre-push-validate": "pnpm run lint && pnpm run test",
+    "post-fix-validate": "pnpm run lint && pnpm run test"
+  },
+  "helperRuntime": {
+    "profile": "instructions-only"
+  },
+  "issueScope": "roadmap",
+  "orphanFirstPolicy": "none"
+}
