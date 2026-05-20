@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import type { LocalizedPersonalityPreview } from '../lib/dantalion';
 import { LocaleProvider } from '../lib/locale-context';
 import {
   defaultBirthdayValue,
@@ -15,7 +16,10 @@ afterEach(() => {
 describe('PersonalityForm', () => {
   it('renders the async result and resets back to the default state', async () => {
     const loadPersonality = vi.fn(
-      async () => '<h2>Major categories of personality</h2>',
+      async (): Promise<LocalizedPersonalityPreview> => ({
+        genius: '100',
+        html: '<h2>Major categories of personality</h2>',
+      }),
     );
 
     render(() => (
@@ -45,6 +49,24 @@ describe('PersonalityForm', () => {
       expect(screen.getByText('Major categories of personality')).toBeTruthy();
     });
 
+    expect(
+      screen.getByRole('link', {
+        name: getPersonalityFormCopy('en').detailLinkLabel,
+      }),
+    ).toHaveProperty('href');
+    expect(
+      screen.getByRole('link', {
+        name: getPersonalityFormCopy('en').detailLinkLabel,
+      }),
+    ).toHaveProperty('getAttribute');
+    expect(
+      screen
+        .getByRole('link', {
+          name: getPersonalityFormCopy('en').detailLinkLabel,
+        })
+        .getAttribute('href'),
+    ).toBe('/en/100/');
+
     await fireEvent.click(reset);
 
     expect(input.value).toBe(defaultBirthdayValue);
@@ -52,7 +74,12 @@ describe('PersonalityForm', () => {
   });
 
   it('blocks invalid dates before the loader is called', async () => {
-    const loadPersonality = vi.fn(async () => '<h2>Should not render</h2>');
+    const loadPersonality = vi.fn(
+      async (): Promise<LocalizedPersonalityPreview> => ({
+        genius: '100',
+        html: '<h2>Should not render</h2>',
+      }),
+    );
 
     render(() => (
       <LocaleProvider language="en">
@@ -82,7 +109,12 @@ describe('PersonalityForm', () => {
     render(() => (
       <LocaleProvider language="ja">
         <PersonalityForm
-          loadPersonality={vi.fn(async () => '<h2>unused</h2>')}
+          loadPersonality={vi.fn(
+            async (): Promise<LocalizedPersonalityPreview> => ({
+              genius: '100',
+              html: '<h2>unused</h2>',
+            }),
+          )}
         />
       </LocaleProvider>
     ));

@@ -4,8 +4,11 @@ import {
   defaultLanguage,
   geniusTypes,
   getDescriptionsFor,
+  getLocalizedDetailMarkdown,
   getLocalizedPersonalityMarkdown,
+  getLocalizedPersonalityPreview,
   getPersonalityFor,
+  normalizeGenius,
   renderMarkdownToHtml,
 } from './dantalion';
 
@@ -37,6 +40,27 @@ describe('dantalion integration', () => {
     expect(enMarkdown).toMatch(/Personality|Brain|Strategy/u);
   });
 
+  it('loads localized genius detail markdown for both supported languages', async () => {
+    const genius = geniusTypes[0];
+
+    expect(genius).toBeDefined();
+
+    if (!genius) {
+      throw new Error('Expected at least one supported genius value.');
+    }
+
+    const jaMarkdown = await getLocalizedDetailMarkdown(genius, 'ja');
+    const enMarkdown = await getLocalizedDetailMarkdown(
+      genius,
+      defaultLanguage,
+    );
+
+    expect(jaMarkdown).toContain('#');
+    expect(enMarkdown).toContain('#');
+    expect(jaMarkdown).toContain('Dantalion');
+    expect(enMarkdown).toContain('Dantalion');
+  });
+
   it('keeps the renamed DescriptionsType import working', async () => {
     const descriptions: DescriptionsType = await getDescriptionsFor(
       defaultLanguage,
@@ -53,5 +77,22 @@ describe('dantalion integration', () => {
 
     expect(html).toContain('<h2');
     expect(html).not.toContain('<script');
+  });
+
+  it('returns the computed genius alongside the localized preview html', async () => {
+    const preview = await getLocalizedPersonalityPreview(
+      smokeBirthday,
+      defaultLanguage,
+    );
+
+    expect(preview.html).toContain('<h');
+    expect(geniusTypes).toContain(preview.genius);
+  });
+
+  it('normalizes only supported genius route params', () => {
+    expect(normalizeGenius('100')).toBe('100');
+    expect(normalizeGenius(' 100 ')).toBe('100');
+    expect(normalizeGenius('404')).toBeNull();
+    expect(normalizeGenius('unknown')).toBeNull();
   });
 });

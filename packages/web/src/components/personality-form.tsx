@@ -1,5 +1,9 @@
 import { createMemo, createResource, createSignal, Show } from 'solid-js';
-import { getLocalizedPersonalityHtml } from '../lib/dantalion';
+import {
+  getGeniusPath,
+  getLocalizedPersonalityPreview,
+  type LocalizedPersonalityPreview,
+} from '../lib/dantalion';
 import { useLocale } from '../lib/locale-context';
 import {
   defaultBirthdayValue,
@@ -26,14 +30,16 @@ const sleep = (ms: number): Promise<void> =>
     setTimeout(resolve, ms);
   });
 
-export type PersonalityLoader = (birthday: Date) => Promise<string>;
+export type PersonalityLoader = (
+  birthday: Date,
+) => Promise<LocalizedPersonalityPreview>;
 
 export function PersonalityForm(props: PersonalityFormProps) {
   const { language } = useLocale();
   const copy = createMemo(() => getPersonalityFormCopy(language()));
   const loadPersonality = () =>
     props.loadPersonality ??
-    ((birthday: Date) => getLocalizedPersonalityHtml(birthday, language()));
+    ((birthday: Date) => getLocalizedPersonalityPreview(birthday, language()));
 
   const [dateValue, setDateValue] = createSignal(defaultBirthdayValue);
   const [submission, setSubmission] = createSignal<Submission>();
@@ -44,12 +50,12 @@ export function PersonalityForm(props: PersonalityFormProps) {
       throw new RangeError(copy().invalidRangeMessage);
     }
 
-    const [html] = await Promise.all([
+    const [preview] = await Promise.all([
       loadPersonality()(birthday),
       sleep(minimumLoadingMs),
     ]);
 
-    return html;
+    return preview;
   });
 
   const validationMessage = createMemo(() =>
@@ -162,9 +168,19 @@ export function PersonalityForm(props: PersonalityFormProps) {
             }
             when={result()}
           >
-            {(html) => (
-              <div class="prose max-w-none rounded-box border border-base-300 bg-base-200 p-6">
-                <div innerHTML={html()} />
+            {(preview) => (
+              <div class="grid gap-4">
+                <div class="prose max-w-none rounded-box border border-base-300 bg-base-200 p-6">
+                  <div innerHTML={preview().html} />
+                </div>
+                <div class="flex justify-end">
+                  <a
+                    class="btn btn-outline btn-sm"
+                    href={getGeniusPath(language(), preview().genius)}
+                  >
+                    {copy().detailLinkLabel}
+                  </a>
+                </div>
               </div>
             )}
           </Show>
