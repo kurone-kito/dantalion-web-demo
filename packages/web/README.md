@@ -18,3 +18,9 @@ The static build prerenders `/dantalion/`, `/dantalion/en/`, and
 `/dantalion/ja/`. The root route renders the English fallback for SSG,
 then redirects after hydration to the preferred locale resolved from
 `localStorage["dantalion-web-demo:locale"]` or `navigator.language`.
+
+Theme switching uses a tiny inline bootstrap script in the document
+head. It resolves `localStorage["dantalion-web-demo:theme"]` first,
+falls back to `prefers-color-scheme`, and sets
+`document.documentElement.dataset.theme` before the client bundle
+hydrates to avoid a flash of the wrong DaisyUI theme.
