@@ -5,6 +5,7 @@ export const maxBirthdayValue = '2050-12-31';
 export const defaultBirthdayValue = '2000-01-01';
 
 export type PersonalityFormCopy = {
+  birthdayLabel: string;
   emptyStateBody: string;
   emptyStateTitle: string;
   invalidRangeMessage: string;
@@ -12,10 +13,12 @@ export type PersonalityFormCopy = {
   resetLabel: string;
   resultTitle: string;
   submitLabel: string;
+  supportedRangeLabel: string;
 };
 
 const personalityFormCopy: Record<SupportedLanguage, PersonalityFormCopy> = {
   en: {
+    birthdayLabel: 'Birthday',
     emptyStateBody:
       'Pick a birthday inside the supported range and submit to render the localized personality result.',
     emptyStateTitle: 'Result preview',
@@ -25,8 +28,10 @@ const personalityFormCopy: Record<SupportedLanguage, PersonalityFormCopy> = {
     resetLabel: 'Reset',
     resultTitle: 'Personality result',
     submitLabel: 'Show personality',
+    supportedRangeLabel: `Supported range: ${minBirthdayValue} to ${maxBirthdayValue}`,
   },
   ja: {
+    birthdayLabel: '誕生日',
     emptyStateBody:
       '対応範囲内の誕生日を選んで送信すると、ローカライズ済みの性格結果を表示します。',
     emptyStateTitle: '結果プレビュー',
@@ -36,6 +41,7 @@ const personalityFormCopy: Record<SupportedLanguage, PersonalityFormCopy> = {
     resetLabel: 'リセット',
     resultTitle: '性格結果',
     submitLabel: '性格を見る',
+    supportedRangeLabel: `対応範囲: ${minBirthdayValue} から ${maxBirthdayValue}`,
   },
 };
 

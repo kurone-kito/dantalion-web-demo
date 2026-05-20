@@ -5,7 +5,10 @@ const baseURL = process.env['BASE_PATH'] ?? '/dantalion/';
 
 export default defineConfig({
   server: {
-    prerender: { autoSubfolderIndex: false },
+    prerender: {
+      autoSubfolderIndex: true,
+      routes: ['/', '/en/', '/ja/'],
+    },
     preset: 'githubPages',
     baseURL,
   },

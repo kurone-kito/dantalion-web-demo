@@ -14,6 +14,7 @@ The app is configured to serve from the `/dantalion/` base path so the
 static build can be published to
 `https://kurone-kito.github.io/dantalion/`.
 
-Until locale-aware routing lands, the interactive form route defaults to
-English at `/dantalion/` and uses the published dantalion runtime
-packages directly from npm.
+The static build prerenders `/dantalion/`, `/dantalion/en/`, and
+`/dantalion/ja/`. The root route renders the English fallback for SSG,
+then redirects after hydration to the preferred locale resolved from
+`localStorage["dantalion-web-demo:locale"]` or `navigator.language`.
