@@ -47,10 +47,14 @@ jobs:
           BASE_PATH: /dantalion/
         run: pnpm --filter @kurone-kito/dantalion-web-demo-web run build
 
-      - if: ${{ secrets.DANTALION_GH_PAGES_DEPLOY_KEY == '' }}
+      - name: ensure deploy key secret is set
+        env:
+          DEPLOY_KEY: ${{ secrets.DANTALION_GH_PAGES_DEPLOY_KEY }}
         run: |
-          echo "::error::Missing secret DANTALION_GH_PAGES_DEPLOY_KEY. Resolve issue #14 before running Deploy Pages."
-          exit 1
+          if [ -z "$DEPLOY_KEY" ]; then
+            echo "::error::Missing secret DANTALION_GH_PAGES_DEPLOY_KEY. Resolve issue #14 before running Deploy Pages."
+            exit 1
+          fi
 
       - uses: actions/checkout@v6
         with:
