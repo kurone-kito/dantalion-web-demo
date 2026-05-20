@@ -3,6 +3,7 @@ import { createMemo } from 'solid-js';
 import { getDemoPageCopy } from '../lib/demo-page';
 import { useLocale } from '../lib/locale-context';
 import { LanguageSwitcher } from './language-switcher';
+import { ThemeToggle } from './theme-toggle';
 
 export type DemoShellProps = {
   children: JSX.Element;
@@ -25,7 +26,10 @@ export function DemoShell(props: DemoShellProps) {
                 <h1 class="text-4xl font-bold">{copy().title}</h1>
                 <p class="max-w-3xl text-base-content/80">{copy().summary}</p>
               </div>
-              <LanguageSwitcher />
+              <div class="flex items-center gap-3 self-start">
+                <ThemeToggle />
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         </article>

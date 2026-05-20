@@ -6,6 +6,7 @@ export type DemoPageCopy = {
   localeMenuLabel: string;
   localeCurrentBadge: string;
   summary: string;
+  themeToggleLabel: string;
   title: string;
 };
 
@@ -16,6 +17,7 @@ const demoPageCopy: Record<SupportedLanguage, DemoPageCopy> = {
     localeMenuLabel: 'Select language',
     summary:
       'Enter a birthday to render the localized personality result with the published dantalion packages.',
+    themeToggleLabel: 'Toggle light or dark theme',
     title: 'Dantalion birthday personality demo',
   },
   ja: {
@@ -24,6 +26,7 @@ const demoPageCopy: Record<SupportedLanguage, DemoPageCopy> = {
     localeMenuLabel: '言語を選択',
     summary:
       '誕生日を入力すると、公開済みの dantalion パッケージでローカライズされた性格結果を表示します。',
+    themeToggleLabel: 'ライトテーマとダークテーマを切り替える',
     title: 'Dantalion 誕生日性格診断デモ',
   },
 };
