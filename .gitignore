@@ -258,6 +258,10 @@ $RECYCLE.BIN/
 
 ### THE PROJECT SPECIFIES #################################################
 
+packages/**/.output/
+packages/**/.vinxi/
+packages/**/app.config.timestamp_*.js
+
 ### Node ###
 # pnpm
 pnpm-lock.yaml.*

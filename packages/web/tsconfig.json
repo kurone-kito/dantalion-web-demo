@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "lib": ["ES2023", "DOM"],
+    "module": "es2022",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "types": ["@solidjs/start/env", "node", "vinxi/types/client"]
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": [".output", ".vinxi", "coverage", "node_modules"]
+}
