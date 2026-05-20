@@ -6,6 +6,7 @@ export const defaultBirthdayValue = '2000-01-01';
 
 export type PersonalityFormCopy = {
   birthdayLabel: string;
+  detailLinkLabel: string;
   emptyStateBody: string;
   emptyStateTitle: string;
   invalidRangeMessage: string;
@@ -19,6 +20,7 @@ export type PersonalityFormCopy = {
 const personalityFormCopy: Record<SupportedLanguage, PersonalityFormCopy> = {
   en: {
     birthdayLabel: 'Birthday',
+    detailLinkLabel: 'Open detail page',
     emptyStateBody:
       'Pick a birthday inside the supported range and submit to render the localized personality result.',
     emptyStateTitle: 'Result preview',
@@ -32,6 +34,7 @@ const personalityFormCopy: Record<SupportedLanguage, PersonalityFormCopy> = {
   },
   ja: {
     birthdayLabel: '誕生日',
+    detailLinkLabel: '詳細ページを開く',
     emptyStateBody:
       '対応範囲内の誕生日を選んで送信すると、ローカライズ済みの性格結果を表示します。',
     emptyStateTitle: '結果プレビュー',

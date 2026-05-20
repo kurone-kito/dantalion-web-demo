@@ -19,6 +19,15 @@ The static build prerenders `/dantalion/`, `/dantalion/en/`, and
 then redirects after hydration to the preferred locale resolved from
 `localStorage["dantalion-web-demo:locale"]` or `navigator.language`.
 
+Per-genius detail pages are prerendered under
+`/dantalion/<locale>/<genius>/`, and legacy root aliases such as
+`/dantalion/100.html` redirect to the locale-aware detail routes after
+hydration. The current `@kurone-kito/dantalion-core@0.19.2` release
+exposes 12 genius values (`000`, `001`, `012`, `024`, `025`, `100`,
+`108`, `125`, `555`, `789`, `888`, `919`) and does not include `404`,
+so this app reserves `/dantalion/404.html` for the static not-found
+page.
+
 Theme switching uses a tiny inline bootstrap script in the document
 head. It resolves `localStorage["dantalion-web-demo:theme"]` first,
 falls back to `prefers-color-scheme`, and sets
