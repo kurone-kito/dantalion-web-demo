@@ -1,5 +1,6 @@
 import { createMemo, createSignal, onMount } from 'solid-js';
 import { DemoShell } from '../components/demo-shell';
+import { RouteMeta } from '../components/route-meta';
 import { defaultLanguage, type SupportedLanguage } from '../lib/dantalion';
 import { getNotFoundPageCopy } from '../lib/genius-page';
 import { getLocalePath, resolveWindowLanguage } from '../lib/locale';
@@ -17,6 +18,14 @@ export default function NotFoundPage() {
   return (
     <LocaleProvider language={language()}>
       <DemoShell>
+        <RouteMeta
+          description={getNotFoundPageCopy(defaultLanguage).body}
+          includeAlternates={false}
+          locale={defaultLanguage}
+          noIndex={true}
+          path="/404.html"
+          title={getNotFoundPageCopy(defaultLanguage).metaTitle}
+        />
         <article class="card bg-base-100 shadow-xl">
           <div class="card-body gap-4">
             <h2 class="text-3xl font-bold">{copy().title}</h2>

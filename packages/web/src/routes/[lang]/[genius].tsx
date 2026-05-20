@@ -1,6 +1,12 @@
 import type { RouteDefinition, RouteSectionProps } from '@solidjs/router';
 import { GeniusDetailPage } from '../../components/genius-detail-page';
-import { geniusTypeValues, normalizeGenius } from '../../lib/dantalion';
+import { RouteMeta } from '../../components/route-meta';
+import {
+  geniusTypeValues,
+  getGeniusPath,
+  normalizeGenius,
+} from '../../lib/dantalion';
+import { getGeniusPageCopy } from '../../lib/genius-page';
 import { useLocale } from '../../lib/locale-context';
 
 export const route = {
@@ -17,5 +23,18 @@ export default function LocalizedGeniusDetail(props: RouteSectionProps) {
     throw new Error('Unsupported genius route parameter.');
   }
 
-  return <GeniusDetailPage genius={genius} language={language()} />;
+  const copy = getGeniusPageCopy(language(), genius);
+
+  return (
+    <>
+      <RouteMeta
+        description={copy.summary}
+        locale={language()}
+        path={getGeniusPath(language(), genius)}
+        title={copy.metaTitle}
+        type="article"
+      />
+      <GeniusDetailPage genius={genius} language={language()} />
+    </>
+  );
 }

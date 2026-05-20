@@ -1,3 +1,4 @@
+import { MetaProvider } from '@solidjs/meta';
 import { Router } from '@solidjs/router';
 import { FileRoutes } from '@solidjs/start/router';
 import { Suspense } from 'solid-js';
@@ -13,11 +14,13 @@ const normalizeRouterBase = (value: string): string => {
 
 export default function App() {
   return (
-    <Router
-      base={normalizeRouterBase(import.meta.env.SERVER_BASE_URL)}
-      root={(props) => <Suspense>{props.children}</Suspense>}
-    >
-      <FileRoutes />
-    </Router>
+    <MetaProvider>
+      <Router
+        base={normalizeRouterBase(import.meta.env.SERVER_BASE_URL)}
+        root={(props) => <Suspense>{props.children}</Suspense>}
+      >
+        <FileRoutes />
+      </Router>
+    </MetaProvider>
   );
 }

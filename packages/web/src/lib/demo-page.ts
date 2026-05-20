@@ -5,6 +5,7 @@ export type DemoPageCopy = {
   badgeLabel: string;
   localeMenuLabel: string;
   localeCurrentBadge: string;
+  metaTitle: string;
   summary: string;
   themeToggleLabel: string;
   title: string;
@@ -15,6 +16,7 @@ const demoPageCopy: Record<SupportedLanguage, DemoPageCopy> = {
     badgeLabel: '/dantalion/ demo',
     localeCurrentBadge: 'Current',
     localeMenuLabel: 'Select language',
+    metaTitle: 'Dantalion - birthday personality demo',
     summary:
       'Enter a birthday to render the localized personality result with the published dantalion packages.',
     themeToggleLabel: 'Toggle light or dark theme',
@@ -24,6 +26,7 @@ const demoPageCopy: Record<SupportedLanguage, DemoPageCopy> = {
     badgeLabel: '/dantalion/ デモ',
     localeCurrentBadge: '現在',
     localeMenuLabel: '言語を選択',
+    metaTitle: 'Dantalion - 誕生日性格診断デモ',
     summary:
       '誕生日を入力すると、公開済みの dantalion パッケージでローカライズされた性格結果を表示します。',
     themeToggleLabel: 'ライトテーマとダークテーマを切り替える',
