@@ -186,14 +186,18 @@ via `idd-template/`. When modifying any `idd-*.instructions.md` file,
 change to the corresponding file in `idd-template/`, replacing resolved
 project-specific values with their template placeholder forms:
 
-| Live value (`.github/instructions/`)                                | Template form (`idd-template/`)  |
-| ------------------------------------------------------------------- | -------------------------------- |
-| `dantalion-web-demo` in repo-name contexts                          | repository-name placeholder       |
-| `dantalion-web-demo` in marker-prefix contexts                      | marker-prefix placeholder         |
-| **fix-validate** command string                                     | `pnpm run lint:fix && pnpm run lint` |
-| **pre-push-validate** command string                                | `pnpm run lint && pnpm run test` |
-| **post-fix-validate** command string                                | `pnpm run lint && pnpm run test` |
-| **install-deps** command string                                     | `corepack enable && pnpm install --frozen-lockfile` |
+- `dantalion-web-demo` in repo-name contexts:
+  repository-name placeholder
+- `dantalion-web-demo` in marker-prefix contexts:
+  marker-prefix placeholder
+- **fix-validate** command string:
+  `pnpm run lint:fix && pnpm run lint`
+- **pre-push-validate** command string:
+  `pnpm run lint && pnpm run test`
+- **post-fix-validate** command string:
+  `pnpm run lint && pnpm run test`
+- **install-deps** command string:
+  `corepack enable && pnpm install --frozen-lockfile`
 
 Match by the named command row in the Project commands table, not by
 command prefix, to avoid confusing commands that share the same

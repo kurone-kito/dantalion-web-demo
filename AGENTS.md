@@ -19,9 +19,8 @@ rules immediately. The canonical detailed guide lives in
 - Build: `pnpm run build`
 - Clean: `pnpm run clean`
 
-> **Bootstrap caveat**: until the workspace scaffold lands, the command
-> set above is the recorded steady-state plan and may fail on a fresh
-> clone.
+> **Current state**: the workspace scaffold is present. Application
+> packages will land incrementally under `packages/`.
 
 ## Immediate rules
 

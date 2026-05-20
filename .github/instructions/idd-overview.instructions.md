@@ -36,14 +36,14 @@ the recorded machine-readable policy. Absent values keep the gate
 enabled and default approval actors to
 `owners-and-maintainers-only`.
 
-| Name                    | Commands                         |
-| ----------------------- | -------------------------------- |
-| **fix-validate**        | `pnpm run lint:fix && pnpm run lint`      |
-| **pre-push-validate**   | `pnpm run lint && pnpm run test` |
-| **post-fix-validate**   | `pnpm run lint && pnpm run test` |
-| **install-deps**        | `corepack enable && pnpm install --frozen-lockfile`       |
-| **issue-scope**         | `roadmap`                        |
-| **orphan-first-policy** | `none`                           |
+| Name                    | Commands                                             |
+| ----------------------- | ---------------------------------------------------- |
+| **fix-validate**        | `pnpm run lint:fix && pnpm run lint`                 |
+| **pre-push-validate**   | `pnpm run lint && pnpm run test`                     |
+| **post-fix-validate**   | `pnpm run lint && pnpm run test`                     |
+| **install-deps**        | `corepack enable && pnpm install --frozen-lockfile`  |
+| **issue-scope**         | `roadmap`                                            |
+| **orphan-first-policy** | `none`                                               |
 
 Non-shell rows such as **issue-scope** and **orphan-first-policy** are
 workflow settings. Read them literally, not as commands.
