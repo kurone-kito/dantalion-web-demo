@@ -8,6 +8,8 @@ The Solid Start application package for the dantalion web demo.
 pnpm --filter @kurone-kito/dantalion-web-demo-web run dev
 pnpm --filter @kurone-kito/dantalion-web-demo-web run build
 pnpm --filter @kurone-kito/dantalion-web-demo-web run preview
+pnpm --filter @kurone-kito/dantalion-web-demo-web run story:dev
+pnpm --filter @kurone-kito/dantalion-web-demo-web run story:build
 ```
 
 The app is configured to serve from the `/dantalion/` base path so the
@@ -39,6 +41,20 @@ alternates, Open Graph tags, and Twitter card tags. Production builds
 resolve those absolute URLs from `SITE_ORIGIN` first, then
 `VITE_SITE_ORIGIN`, and finally fall back to
 `https://kurone-kito.github.io/dantalion`.
+
+## Component catalog
+
+`pnpm --filter @kurone-kito/dantalion-web-demo-web run story:dev` boots
+[Storybook 10](https://storybook.js.org/) on port 6006 via the
+[`storybook-solidjs-vite`](https://www.npmjs.com/package/storybook-solidjs-vite)
+framework adapter. Stories live next to the components they cover
+(`src/**/*.stories.tsx`) and load the same Tailwind 4 + DaisyUI styles
+as the runtime app through `src/app.css`.
+
+`pnpm --filter @kurone-kito/dantalion-web-demo-web run story:build`
+produces a static catalog under `storybook-static/`. The CI workflow
+runs this build on every PR so missing stories or broken decorators
+fail fast.
 
 Static assets for search and social previews live under `public/`:
 `favicons/favicon.svg`, PNG favicon fallbacks, `og.png`, and the source

@@ -6,5 +6,6 @@ export default defineConfig({
   test: {
     passWithNoTests: true,
     include: ['packages/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: ['./packages/web/vitest-jest-dom.setup.ts'],
   },
 });

@@ -261,6 +261,7 @@ $RECYCLE.BIN/
 packages/**/.output/
 packages/**/.vinxi/
 packages/**/app.config.timestamp_*.js
+packages/**/storybook-static/
 !packages/web/public/
 !packages/web/public/**
 
