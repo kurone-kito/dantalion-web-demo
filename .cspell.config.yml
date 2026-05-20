@@ -6,6 +6,7 @@ cache:
 import:
   - '@kurone-kito/cspell-config'
 words:
+  - DesctiptionsType
   - esync
   - iddVersion
   - isort
