@@ -60,7 +60,7 @@ jobs:
         with:
           path: gh-pages
           ref: gh-pages
-          repo: kurone-kito/dantalion
+          repository: kurone-kito/dantalion
           ssh-key: ${{ secrets.DANTALION_GH_PAGES_DEPLOY_KEY }}
 
       - name: sync static output
