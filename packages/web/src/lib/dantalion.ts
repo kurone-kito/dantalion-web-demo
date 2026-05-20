@@ -6,20 +6,21 @@ import {
   type DescriptionsType,
   fallbackLanguage,
   getPersonalityMarkdown,
-  locales,
 } from '@kurone-kito/dantalion-i18n';
 import DOMPurify from 'isomorphic-dompurify';
 import { marked } from 'marked';
 
 export type { DescriptionsType };
 
-export type SupportedLanguage = keyof typeof locales;
+const supportedLanguageValues = ['en', 'ja'] as const;
+
+export type SupportedLanguage = (typeof supportedLanguageValues)[number];
 
 export const defaultLanguage = fallbackLanguage as SupportedLanguage;
 
 export const geniusTypes = [...types.genius] as readonly Genius[];
 
-export const supportedLanguages = Object.keys(locales) as SupportedLanguage[];
+export const supportedLanguages = [...supportedLanguageValues];
 
 const accessorsCache = new Map<SupportedLanguage, Promise<Accessors>>();
 

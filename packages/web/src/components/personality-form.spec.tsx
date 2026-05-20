@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { LocaleProvider } from '../lib/locale-context';
 import {
   defaultBirthdayValue,
   getPersonalityFormCopy,
@@ -18,7 +19,9 @@ describe('PersonalityForm', () => {
     );
 
     render(() => (
-      <PersonalityForm language="en" loadPersonality={loadPersonality} />
+      <LocaleProvider language="en">
+        <PersonalityForm loadPersonality={loadPersonality} />
+      </LocaleProvider>
     ));
 
     const input = screen.getByLabelText('Birthday') as HTMLInputElement;
@@ -52,7 +55,9 @@ describe('PersonalityForm', () => {
     const loadPersonality = vi.fn(async () => '<h2>Should not render</h2>');
 
     render(() => (
-      <PersonalityForm language="en" loadPersonality={loadPersonality} />
+      <LocaleProvider language="en">
+        <PersonalityForm loadPersonality={loadPersonality} />
+      </LocaleProvider>
     ));
 
     const input = screen.getByLabelText('Birthday') as HTMLInputElement;
@@ -71,5 +76,21 @@ describe('PersonalityForm', () => {
     await fireEvent.click(submit);
 
     expect(loadPersonality).not.toHaveBeenCalled();
+  });
+
+  it('renders localized form labels from the active locale context', () => {
+    render(() => (
+      <LocaleProvider language="ja">
+        <PersonalityForm
+          loadPersonality={vi.fn(async () => '<h2>unused</h2>')}
+        />
+      </LocaleProvider>
+    ));
+
+    expect(screen.getByLabelText('誕生日')).toBeTruthy();
+    expect(screen.getByText('性格を見る')).toBeTruthy();
+    expect(
+      screen.getByText('対応範囲: 1873-02-01 から 2050-12-31'),
+    ).toBeTruthy();
   });
 });

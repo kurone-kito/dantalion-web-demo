@@ -1,6 +1,6 @@
 import { createMemo, createResource, createSignal, Show } from 'solid-js';
-import type { SupportedLanguage } from '../lib/dantalion';
-import { defaultLanguage, getLocalizedPersonalityHtml } from '../lib/dantalion';
+import { getLocalizedPersonalityHtml } from '../lib/dantalion';
+import { useLocale } from '../lib/locale-context';
 import {
   defaultBirthdayValue,
   getPersonalityFormCopy,
@@ -12,13 +12,7 @@ import {
 
 const minimumLoadingMs = 150;
 
-export type PersonalityLoader = (
-  birthday: Date,
-  language: SupportedLanguage,
-) => Promise<string>;
-
 export type PersonalityFormProps = {
-  language?: SupportedLanguage;
   loadPersonality?: PersonalityLoader;
 };
 
@@ -32,11 +26,14 @@ const sleep = (ms: number): Promise<void> =>
     setTimeout(resolve, ms);
   });
 
+export type PersonalityLoader = (birthday: Date) => Promise<string>;
+
 export function PersonalityForm(props: PersonalityFormProps) {
-  const language = () => props.language ?? defaultLanguage;
+  const { language } = useLocale();
   const copy = createMemo(() => getPersonalityFormCopy(language()));
   const loadPersonality = () =>
-    props.loadPersonality ?? getLocalizedPersonalityHtml;
+    props.loadPersonality ??
+    ((birthday: Date) => getLocalizedPersonalityHtml(birthday, language()));
 
   const [dateValue, setDateValue] = createSignal(defaultBirthdayValue);
   const [submission, setSubmission] = createSignal<Submission>();
@@ -48,7 +45,7 @@ export function PersonalityForm(props: PersonalityFormProps) {
     }
 
     const [html] = await Promise.all([
-      loadPersonality()(birthday, language()),
+      loadPersonality()(birthday),
       sleep(minimumLoadingMs),
     ]);
 
@@ -81,7 +78,9 @@ export function PersonalityForm(props: PersonalityFormProps) {
         <div class="card-body gap-5">
           <form class="grid gap-4" onSubmit={handleSubmit}>
             <label class="form-control gap-2" for="birthday">
-              <span class="label-text text-sm font-medium">Birthday</span>
+              <span class="label-text text-sm font-medium">
+                {copy().birthdayLabel}
+              </span>
               <input
                 aria-describedby="birthday-help"
                 class="input input-bordered w-full"
@@ -97,7 +96,7 @@ export function PersonalityForm(props: PersonalityFormProps) {
               />
             </label>
             <p class="text-sm text-base-content/70" id="birthday-help">
-              Supported range: {minBirthdayValue} to {maxBirthdayValue}
+              {copy().supportedRangeLabel}
             </p>
 
             <Show when={validationMessage()}>
