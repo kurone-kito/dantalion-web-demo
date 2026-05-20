@@ -34,6 +34,18 @@ falls back to `prefers-color-scheme`, and sets
 `document.documentElement.dataset.theme` before the client bundle
 hydrates to avoid a flash of the wrong DaisyUI theme.
 
+SEO metadata is emitted per route with canonical URLs, `hreflang`
+alternates, Open Graph tags, and Twitter card tags. Production builds
+resolve those absolute URLs from `SITE_ORIGIN` first, then
+`VITE_SITE_ORIGIN`, and finally fall back to
+`https://kurone-kito.github.io/dantalion`.
+
+Static assets for search and social previews live under `public/`:
+`favicons/favicon.svg`, PNG favicon fallbacks, `og.png`, and the source
+artwork `og-card.svg`. The build finishes with `scripts/postbuild.mjs`,
+which emits `robots.txt` and `sitemap.xml` into `.output/public/` using
+the same site origin and all prerendered locale detail routes.
+
 ## Deployment
 
 `BASE_PATH=/dantalion/` controls the router and asset base used by the

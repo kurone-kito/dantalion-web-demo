@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "vinxi build",
+    "build": "vinxi build && node ./scripts/postbuild.mjs",
     "clean": "rimraf -g .output .vinxi coverage node_modules/.cache app.config.timestamp_*.js",
     "dev": "vinxi dev",
     "lint": "biome check app.config.ts package.json scripts src tsconfig.json tsconfig.test.json",
