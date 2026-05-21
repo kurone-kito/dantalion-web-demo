@@ -107,8 +107,11 @@ export const getLocalizedPersonalityHtml = async (
 export type LocalizedPersonalityPreview = {
   genius: Genius;
   html: string;
+  innerGenius: Genius;
   introHtml: string;
+  outerGenius: Genius;
   sections: readonly LocalizedPersonalitySection[];
+  workStyleGenius: Genius;
 };
 
 export const getLocalizedPersonalityPreview = async (
@@ -122,12 +125,15 @@ export const getLocalizedPersonalityPreview = async (
   return {
     genius: personality.inner,
     html: renderMarkdownToHtml(markdown),
+    innerGenius: personality.inner,
     introHtml: intro ? renderMarkdownToHtml(intro) : '',
+    outerGenius: personality.outer,
     sections: sections.map((section) => ({
       bodyHtml: renderMarkdownToHtml(section.body),
       heading: section.heading,
       id: section.id,
     })),
+    workStyleGenius: personality.workStyle,
   };
 };
 
