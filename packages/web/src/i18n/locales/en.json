@@ -1,0 +1,37 @@
+{
+  "demoPage": {
+    "badgeLabel": "/dantalion/ demo",
+    "localeCurrentBadge": "Current",
+    "localeMenuLabel": "Select language",
+    "metaTitle": "Dantalion - birthday personality demo",
+    "summary": "Enter a birthday to render the localized personality result with the published dantalion packages.",
+    "themeToggleLabel": "Toggle light or dark theme",
+    "title": "Dantalion birthday personality demo"
+  },
+  "personalityForm": {
+    "birthdayLabel": "Birthday",
+    "detailLinkLabel": "Open detail page",
+    "emptyStateBody": "Pick a birthday inside the supported range and submit to render the localized personality result.",
+    "emptyStateTitle": "Result preview",
+    "invalidRangeMessage": "Please pick a date between 1873-02-01 and 2050-12-31.",
+    "loadingLabel": "Loading personality...",
+    "resetLabel": "Reset",
+    "resultTitle": "Personality result",
+    "submitLabel": "Show personality",
+    "supportedRangeLabel": "Supported range: 1873-02-01 to 2050-12-31"
+  },
+  "geniusPage": {
+    "breadcrumbHomeLabel": "Home",
+    "ctaLabel": "Find your genius",
+    "loadingLabel": "Loading detail page...",
+    "metaTitlePrefix": "Dantalion - ",
+    "summary": "Explore the full localized profile for this genius type.",
+    "titlePrefix": "Genius "
+  },
+  "notFoundPage": {
+    "actionLabel": "Back to the demo",
+    "body": "The page you requested is not part of this static demo build.",
+    "metaTitle": "Dantalion - Page not found",
+    "title": "Page not found"
+  }
+}
