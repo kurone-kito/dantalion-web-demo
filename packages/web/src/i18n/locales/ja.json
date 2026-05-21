@@ -1,0 +1,37 @@
+{
+  "demoPage": {
+    "badgeLabel": "/dantalion/ デモ",
+    "localeCurrentBadge": "現在",
+    "localeMenuLabel": "言語を選択",
+    "metaTitle": "Dantalion - 誕生日性格診断デモ",
+    "summary": "誕生日を入力すると、公開済みの dantalion パッケージでローカライズされた性格結果を表示します。",
+    "themeToggleLabel": "ライトテーマとダークテーマを切り替える",
+    "title": "Dantalion 誕生日性格診断デモ"
+  },
+  "personalityForm": {
+    "birthdayLabel": "誕生日",
+    "detailLinkLabel": "詳細ページを開く",
+    "emptyStateBody": "対応範囲内の誕生日を選んで送信すると、ローカライズ済みの性格結果を表示します。",
+    "emptyStateTitle": "結果プレビュー",
+    "invalidRangeMessage": "1873-02-01 から 2050-12-31 の範囲で日付を選択してください。",
+    "loadingLabel": "性格を読み込み中...",
+    "resetLabel": "リセット",
+    "resultTitle": "性格結果",
+    "submitLabel": "性格を見る",
+    "supportedRangeLabel": "対応範囲: 1873-02-01 から 2050-12-31"
+  },
+  "geniusPage": {
+    "breadcrumbHomeLabel": "ホーム",
+    "ctaLabel": "診断トップへ戻る",
+    "loadingLabel": "詳細を読み込み中...",
+    "metaTitlePrefix": "Dantalion - ",
+    "summary": "この genius type のローカライズ済み詳細ページです。",
+    "titlePrefix": "Genius "
+  },
+  "notFoundPage": {
+    "actionLabel": "デモのトップへ戻る",
+    "body": "指定されたページは、この静的デモの公開対象に含まれていません。",
+    "metaTitle": "Dantalion - ページが見つかりません",
+    "title": "ページが見つかりません"
+  }
+}
