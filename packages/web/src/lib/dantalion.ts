@@ -10,9 +10,16 @@ import {
 } from '@kurone-kito/dantalion-i18n';
 import DOMPurify from 'isomorphic-dompurify';
 import { marked } from 'marked';
+import { splitMarkdownIntoSections } from './personality-sections';
 
 export type { Genius } from '@kurone-kito/dantalion-core';
 export type { DescriptionsType };
+
+export type LocalizedPersonalitySection = {
+  bodyHtml: string;
+  heading: string;
+  id: string;
+};
 
 const supportedLanguageValues = ['en', 'ja'] as const;
 
@@ -100,6 +107,8 @@ export const getLocalizedPersonalityHtml = async (
 export type LocalizedPersonalityPreview = {
   genius: Genius;
   html: string;
+  introHtml: string;
+  sections: readonly LocalizedPersonalitySection[];
 };
 
 export const getLocalizedPersonalityPreview = async (
@@ -107,10 +116,18 @@ export const getLocalizedPersonalityPreview = async (
   language: SupportedLanguage,
 ): Promise<LocalizedPersonalityPreview> => {
   const personality = getPersonalityFor(birthday);
+  const markdown = await getLocalizedPersonalityMarkdown(birthday, language);
+  const { intro, sections } = splitMarkdownIntoSections(markdown);
 
   return {
     genius: personality.inner,
-    html: await getLocalizedPersonalityHtml(birthday, language),
+    html: renderMarkdownToHtml(markdown),
+    introHtml: intro ? renderMarkdownToHtml(intro) : '',
+    sections: sections.map((section) => ({
+      bodyHtml: renderMarkdownToHtml(section.body),
+      heading: section.heading,
+      id: section.id,
+    })),
   };
 };
 

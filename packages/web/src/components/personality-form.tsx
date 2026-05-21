@@ -1,4 +1,4 @@
-import { createMemo, createResource, createSignal, Show } from 'solid-js';
+import { createMemo, createResource, createSignal, For, Show } from 'solid-js';
 import { useWebCopy } from '../i18n/web-copy';
 import {
   getGeniusPath,
@@ -15,6 +15,7 @@ import {
   minBirthdayValue,
   parseBirthdayValue,
 } from '../lib/personality-form';
+import { SectionCard } from './result/section-card';
 
 const minimumLoadingMs = 150;
 const nicknameMaxLength = 32;
@@ -216,9 +217,22 @@ export function PersonalityForm(props: PersonalityFormProps) {
           >
             {(preview) => (
               <div class="grid gap-4">
-                <div class="prose max-w-none rounded-box border border-base-300 bg-base-200 p-6">
-                  <div innerHTML={preview().html} />
-                </div>
+                <Show when={preview().introHtml}>
+                  {(introHtml) => (
+                    <div
+                      class="prose max-w-none rounded-box border border-base-300 bg-base-200 p-4"
+                      innerHTML={introHtml()}
+                    />
+                  )}
+                </Show>
+                <For each={preview().sections}>
+                  {(section) => (
+                    <SectionCard
+                      bodyHtml={section.bodyHtml}
+                      section={section}
+                    />
+                  )}
+                </For>
                 <div class="flex justify-end">
                   <a
                     class="btn btn-outline btn-sm"
