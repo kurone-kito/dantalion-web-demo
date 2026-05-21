@@ -1,6 +1,8 @@
-import { createSignal, Show } from 'solid-js';
+import { createSignal, onMount, Show } from 'solid-js';
 import { useWebCopy } from '../../i18n/web-copy';
 import type { Genius, SupportedLanguage } from '../../lib/dantalion';
+import { formatHeading } from '../../lib/heading';
+import { canShareFiles, renderOgCard } from '../../lib/og-card';
 import { encodePermalink } from '../../lib/permalink';
 
 const SITE_ORIGIN_FALLBACK = 'https://kurone-kito.github.io/dantalion';
@@ -17,14 +19,22 @@ const resolveSiteOrigin = (): string => {
 export type ShareMenuProps = {
   birthday: string;
   genius: Genius;
+  innerGenius?: Genius | undefined;
   language: SupportedLanguage;
   nickname?: string | undefined;
+  outerGenius?: Genius | undefined;
+  workStyleGenius?: Genius | undefined;
 };
 
 export function ShareMenu(props: ShareMenuProps) {
   const copy = useWebCopy();
   const [copied, setCopied] = createSignal(false);
+  const [canShareWithFiles, setCanShareWithFiles] = createSignal(false);
   const canShare = typeof navigator !== 'undefined' && 'share' in navigator;
+
+  onMount(() => {
+    setCanShareWithFiles(canShareFiles());
+  });
 
   const buildShareUrl = (): string => {
     const path = encodePermalink({
@@ -48,6 +58,37 @@ export function ShareMenu(props: ShareMenuProps) {
       });
     } catch {
       // User cancelled or share failed — ignore silently
+    }
+  };
+
+  const handleWebShareWithPreview = async () => {
+    if (!canShareWithFiles()) return;
+    try {
+      const blob = await renderOgCard({
+        fileIdLabel: copy().result.fileId,
+        footerUrl: 'kurone-kito.github.io/dantalion',
+        innerGenius: props.innerGenius ?? props.genius,
+        language: props.language,
+        nickname: props.nickname,
+        outerGenius: props.outerGenius ?? props.genius,
+        resultHeading: formatHeading(
+          copy().result.headingTemplate,
+          props.nickname,
+          copy().result.nicknameFallback,
+        ),
+        workStyleGenius: props.workStyleGenius ?? props.genius,
+      });
+      const file = new File([blob], `dantalion-${props.genius}.png`, {
+        type: 'image/png',
+      });
+      await navigator.share({
+        files: [file],
+        text: buildShareText(),
+        title: copy().demoPage.metaTitle,
+        url: buildShareUrl(),
+      });
+    } catch {
+      // share failed or user cancelled
     }
   };
 
@@ -75,7 +116,14 @@ export function ShareMenu(props: ShareMenuProps) {
       <button class="btn btn-primary btn-sm" tabindex="0" type="button">
         {copy().share.trigger}
       </button>
-      <ul class="menu dropdown-content z-10 mt-2 w-56 rounded-box border border-base-300 bg-base-100 p-2 shadow-xl">
+      <ul class="menu dropdown-content z-10 mt-2 w-64 rounded-box border border-base-300 bg-base-100 p-2 shadow-xl">
+        <Show when={canShareWithFiles()}>
+          <li>
+            <button onClick={handleWebShareWithPreview} type="button">
+              {copy().share.items.webShareWithPreview}
+            </button>
+          </li>
+        </Show>
         <Show when={canShare}>
           <li>
             <button onClick={handleWebShare} type="button">

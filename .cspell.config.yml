@@ -10,6 +10,8 @@ words:
   - esync
   - iddVersion
   - isort
+  - Kaku
+  - Meiryo
   - pyproject
   - pylint
   - pytest

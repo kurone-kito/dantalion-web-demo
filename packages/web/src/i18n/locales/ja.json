@@ -84,6 +84,7 @@
     "trigger": "共有する",
     "items": {
       "webShare": "共有…",
+      "webShareWithPreview": "プレビュー付きで共有",
       "copyLink": "リンクをコピー",
       "x": "X で共有",
       "bluesky": "Bluesky で共有"
