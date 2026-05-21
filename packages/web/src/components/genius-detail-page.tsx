@@ -1,4 +1,4 @@
-import { createAsync } from '@solidjs/router';
+import { A, createAsync } from '@solidjs/router';
 import { createMemo, Show } from 'solid-js';
 import {
   type Genius,
@@ -28,9 +28,9 @@ export function GeniusDetailPage(props: GeniusDetailPageProps) {
         <nav aria-label="Breadcrumb" class="breadcrumbs text-sm">
           <ul>
             <li>
-              <a href={getLocalePath(props.language)}>
+              <A href={getLocalePath(props.language)}>
                 {copy().breadcrumbHomeLabel}
-              </a>
+              </A>
             </li>
             <li>{copy().title}</li>
           </ul>
@@ -44,12 +44,12 @@ export function GeniusDetailPage(props: GeniusDetailPageProps) {
               <p class="max-w-3xl text-base-content/70">{copy().summary}</p>
             </div>
           </div>
-          <a
+          <A
             class="btn btn-primary self-start lg:self-auto"
             href={getLocalePath(props.language)}
           >
             {copy().ctaLabel}
-          </a>
+          </A>
         </div>
 
         <Show
@@ -75,18 +75,18 @@ export function GeniusDetailPage(props: GeniusDetailPageProps) {
         </Show>
 
         <div class="flex flex-wrap gap-3">
-          <a
+          <A
             class="btn btn-outline btn-sm"
             href={getGeniusPath('en', props.genius)}
           >
             English
-          </a>
-          <a
+          </A>
+          <A
             class="btn btn-outline btn-sm"
             href={getGeniusPath('ja', props.genius)}
           >
             日本語
-          </a>
+          </A>
         </div>
       </div>
     </article>

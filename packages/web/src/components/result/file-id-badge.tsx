@@ -1,3 +1,4 @@
+import { A } from '@solidjs/router';
 import { createSignal, Show } from 'solid-js';
 import { useWebCopy } from '../../i18n/web-copy';
 import {
@@ -27,7 +28,7 @@ export function FileIdBadge(props: FileIdBadgeProps) {
 
   return (
     <div class="flex flex-wrap items-center gap-3">
-      <a
+      <A
         aria-describedby="file-id-hint"
         class="badge badge-outline badge-lg gap-2 hover:badge-primary"
         href={getGeniusPath(props.language, props.genius)}
@@ -36,7 +37,7 @@ export function FileIdBadge(props: FileIdBadgeProps) {
           {copy().result.fileId}
         </span>
         <span class="font-mono text-base font-semibold">{props.genius}</span>
-      </a>
+      </A>
       <button class="btn btn-ghost btn-xs" onClick={handleCopy} type="button">
         {copy().result.fileIdCopy}
       </button>

@@ -1,3 +1,4 @@
+import { A } from '@solidjs/router';
 import {
   createMemo,
   createResource,
@@ -302,12 +303,12 @@ export function PersonalityForm(props: PersonalityFormProps) {
                   )}
                 </For>
                 <div class="flex justify-end" data-print-hidden="true">
-                  <a
+                  <A
                     class="btn btn-outline btn-sm"
                     href={getGeniusPath(language(), preview().genius)}
                   >
                     {copy().detailLinkLabel}
-                  </a>
+                  </A>
                 </div>
               </div>
             )}

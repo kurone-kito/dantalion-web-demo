@@ -13,6 +13,7 @@ export default defineConfig({
   server: {
     prerender: {
       autoSubfolderIndex: true,
+      crawlLinks: false,
       routes: [
         '/',
         '/en/',
