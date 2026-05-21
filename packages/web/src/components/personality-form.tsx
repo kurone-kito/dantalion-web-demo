@@ -269,7 +269,6 @@ export function PersonalityForm(props: PersonalityFormProps) {
                     data-print-hidden="true"
                   >
                     <ShareMenu
-                      birthday={submission()?.value ?? dateValue()}
                       genius={preview().genius}
                       innerGenius={preview().innerGenius}
                       language={language()}
