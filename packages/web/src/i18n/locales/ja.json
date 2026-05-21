@@ -68,7 +68,8 @@
     "fileIdCopyConfirmation": "ID をクリップボードにコピーしました",
     "fileIdHint": "性格に対応する安定識別子です。クリックで詳細ページへ、コピーで ID を共有できます。",
     "headingTemplate": "{{nickname}}さんの性格診断",
-    "nicknameFallback": "名無しの権兵衛"
+    "nicknameFallback": "名無しの権兵衛",
+    "printLabel": "印刷する"
   },
   "geniusPage": {
     "breadcrumbHomeLabel": "ホーム",
