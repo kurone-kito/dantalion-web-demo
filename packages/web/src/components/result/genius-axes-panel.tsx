@@ -1,3 +1,4 @@
+import { A } from '@solidjs/router';
 import { For } from 'solid-js';
 import { useWebCopy } from '../../i18n/web-copy';
 import type { Genius, SupportedLanguage } from '../../lib/dantalion';
@@ -56,7 +57,7 @@ export function GeniusAxesPanel(props: GeniusAxesPanelProps) {
               const token = geniusAxes[axis.id];
               const Icon = token.Icon;
               return (
-                <a
+                <A
                   class={`flex flex-col items-start gap-2 rounded-box border border-base-300 p-3 transition hover:border-current ${token.textTone}`}
                   href={getGeniusPath(props.language, axis.genius)}
                 >
@@ -67,7 +68,7 @@ export function GeniusAxesPanel(props: GeniusAxesPanelProps) {
                   <span class="font-mono text-lg font-bold text-base-content">
                     {axis.genius}
                   </span>
-                </a>
+                </A>
               );
             }}
           </For>

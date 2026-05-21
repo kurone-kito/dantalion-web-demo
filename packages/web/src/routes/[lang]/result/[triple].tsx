@@ -1,4 +1,4 @@
-import type { RouteSectionProps } from '@solidjs/router';
+import { A, type RouteSectionProps } from '@solidjs/router';
 import { createResource, For, Show } from 'solid-js';
 import { GeniusAxesPanel } from '../../../components/result/genius-axes-panel';
 import { SectionCard } from '../../../components/result/section-card';
@@ -75,9 +75,9 @@ export default function LocalizedTripleResult(props: RouteSectionProps) {
               <p class="text-sm text-base-content/70">
                 {webCopy().notFoundPage.body}
               </p>
-              <a class="btn btn-primary self-start" href={`/${language()}/`}>
+              <A class="btn btn-primary self-start" href={`/${language()}/`}>
                 {webCopy().notFoundPage.actionLabel}
-              </a>
+              </A>
             </div>
           </article>
         }

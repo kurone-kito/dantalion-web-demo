@@ -1,5 +1,7 @@
 // @vitest-environment jsdom
+import { Router } from '@solidjs/router';
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library';
+import type { JSX } from 'solid-js';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { LocalizedPersonalityPreview } from '../lib/dantalion';
 import { LocaleProvider } from '../lib/locale-context';
@@ -12,6 +14,15 @@ import { PersonalityForm } from './personality-form';
 afterEach(() => {
   document.body.innerHTML = '';
 });
+
+const RouterFixture = (props: { children: JSX.Element }): JSX.Element => (
+  <Router
+    explicitLinks={true}
+    root={(routerProps) => <>{routerProps.children}</>}
+  >
+    {[{ path: '*', component: () => props.children }]}
+  </Router>
+);
 
 describe('PersonalityForm', () => {
   it('renders the async result and resets back to the default state', async () => {
@@ -34,9 +45,11 @@ describe('PersonalityForm', () => {
     );
 
     render(() => (
-      <LocaleProvider language="en">
-        <PersonalityForm loadPersonality={loadPersonality} />
-      </LocaleProvider>
+      <RouterFixture>
+        <LocaleProvider language="en">
+          <PersonalityForm loadPersonality={loadPersonality} />
+        </LocaleProvider>
+      </RouterFixture>
     ));
 
     const input = screen.getByLabelText('Birthday') as HTMLInputElement;
@@ -98,9 +111,11 @@ describe('PersonalityForm', () => {
     );
 
     render(() => (
-      <LocaleProvider language="en">
-        <PersonalityForm loadPersonality={loadPersonality} />
-      </LocaleProvider>
+      <RouterFixture>
+        <LocaleProvider language="en">
+          <PersonalityForm loadPersonality={loadPersonality} />
+        </LocaleProvider>
+      </RouterFixture>
     ));
 
     const input = screen.getByLabelText('Birthday') as HTMLInputElement;
@@ -123,21 +138,23 @@ describe('PersonalityForm', () => {
 
   it('renders localized form labels from the active locale context', () => {
     render(() => (
-      <LocaleProvider language="ja">
-        <PersonalityForm
-          loadPersonality={vi.fn(
-            async (): Promise<LocalizedPersonalityPreview> => ({
-              genius: '100',
-              html: '<h2>unused</h2>',
-              innerGenius: '100',
-              introHtml: '',
-              outerGenius: '108',
-              sections: [],
-              workStyleGenius: '125',
-            }),
-          )}
-        />
-      </LocaleProvider>
+      <RouterFixture>
+        <LocaleProvider language="ja">
+          <PersonalityForm
+            loadPersonality={vi.fn(
+              async (): Promise<LocalizedPersonalityPreview> => ({
+                genius: '100',
+                html: '<h2>unused</h2>',
+                innerGenius: '100',
+                introHtml: '',
+                outerGenius: '108',
+                sections: [],
+                workStyleGenius: '125',
+              }),
+            )}
+          />
+        </LocaleProvider>
+      </RouterFixture>
     ));
 
     expect(screen.getByLabelText('誕生日')).toBeTruthy();
