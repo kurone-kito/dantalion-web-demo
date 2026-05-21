@@ -9,6 +9,12 @@ export default defineConfig({
   test: {
     passWithNoTests: true,
     include: ['packages/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    exclude: [
+      '**/e2e/**',
+      '**/node_modules/**',
+      '**/.output/**',
+      '**/.vinxi/**',
+    ],
     setupFiles: ['./packages/web/vitest-jest-dom.setup.ts'],
     server: {
       deps: {

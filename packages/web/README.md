@@ -42,6 +42,30 @@ resolve those absolute URLs from `SITE_ORIGIN` first, then
 `VITE_SITE_ORIGIN`, and finally fall back to
 `https://kurone-kito.github.io/dantalion`.
 
+## End-to-end tests
+
+End-to-end smoke is driven by [Playwright](https://playwright.dev/).
+On a clean clone run once:
+
+```sh
+pnpm install
+pnpm exec playwright install chromium
+```
+
+Then:
+
+```sh
+pnpm --filter @kurone-kito/dantalion-web-demo-web run test:e2e         # headless
+pnpm --filter @kurone-kito/dantalion-web-demo-web run test:e2e:headed  # watch in a window
+pnpm --filter @kurone-kito/dantalion-web-demo-web run test:e2e:ui      # Playwright UI
+pnpm --filter @kurone-kito/dantalion-web-demo-web run test:e2e:report  # open the last HTML report
+```
+
+The runner builds the static artefact and boots `scripts/preview.mjs`
+on `127.0.0.1:4173/dantalion/` before each invocation. Specs live in
+`packages/web/e2e/` and target the deploy-shaped base path so the
+checks mirror what `gh-pages` serves.
+
 ## Component catalog
 
 `pnpm --filter @kurone-kito/dantalion-web-demo-web run story:dev` boots

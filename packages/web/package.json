@@ -7,15 +7,19 @@
   "type": "module",
   "scripts": {
     "build": "vinxi build && node ./scripts/postbuild.mjs",
-    "clean": "rimraf -g .output .vinxi .storybook-static coverage node_modules/.cache app.config.timestamp_*.js storybook-static",
+    "clean": "rimraf -g .output .vinxi .storybook-static coverage node_modules/.cache app.config.timestamp_*.js playwright-report storybook-static test-results",
     "dev": "vinxi dev",
-    "lint": "biome check .storybook app.config.ts package.json scripts src tsconfig.json tsconfig.test.json",
-    "lint:fix": "biome check --write .storybook app.config.ts package.json scripts src tsconfig.json tsconfig.test.json",
+    "lint": "biome check .storybook app.config.ts e2e package.json playwright.config.ts scripts src tsconfig.json tsconfig.test.json",
+    "lint:fix": "biome check --write .storybook app.config.ts e2e package.json playwright.config.ts scripts src tsconfig.json tsconfig.test.json",
     "preview": "node ./scripts/preview.mjs",
     "start": "node ./scripts/preview.mjs",
     "story:build": "storybook build --output-dir storybook-static --quiet",
     "story:dev": "storybook dev --port 6006 --no-open",
     "test": "pnpm run \"/test:.+/\"",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:report": "playwright show-report",
+    "test:e2e:ui": "playwright test --ui",
     "test:ts": "tsc -p tsconfig.test.json --noEmit",
     "test:vitest": "vitest run --passWithNoTests"
   },
@@ -30,6 +34,7 @@
     "solid-js": "1.9.13"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@solidjs/testing-library": "0.8.10",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "4.3.0",
@@ -39,6 +44,7 @@
     "daisyui": "5.5.20",
     "jsdom": "29.1.1",
     "mime-db": "1.54.0",
+    "playwright": "^1.60.0",
     "storybook": "10.4.0",
     "storybook-solidjs-vite": "10.0.12",
     "tailwindcss": "4.3.0",
