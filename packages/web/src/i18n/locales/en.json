@@ -69,7 +69,9 @@
     "fileIdHint": "A stable identifier for this personality. Click to open the detail page or use the copy button to share the ID.",
     "headingTemplate": "{{nickname}}'s personality",
     "nicknameFallback": "Anonymous",
-    "printLabel": "Print result"
+    "printLabel": "Print result",
+    "showDetails": "Show details",
+    "hideDetails": "Hide details"
   },
   "geniusPage": {
     "breadcrumbHomeLabel": "Home",

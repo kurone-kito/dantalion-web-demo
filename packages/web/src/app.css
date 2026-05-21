@@ -12,6 +12,18 @@ body {
   min-height: 100vh;
 }
 
+details > summary .when-open {
+  display: none;
+}
+
+details[open] > summary .when-closed {
+  display: none;
+}
+
+details[open] > summary .when-open {
+  display: inline;
+}
+
 @media print {
   :root {
     color-scheme: light;
