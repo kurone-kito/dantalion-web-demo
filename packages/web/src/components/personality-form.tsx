@@ -271,8 +271,11 @@ export function PersonalityForm(props: PersonalityFormProps) {
                     <ShareMenu
                       birthday={submission()?.value ?? dateValue()}
                       genius={preview().genius}
+                      innerGenius={preview().innerGenius}
                       language={language()}
                       nickname={submission()?.nickname}
+                      outerGenius={preview().outerGenius}
+                      workStyleGenius={preview().workStyleGenius}
                     />
                     <PrintButton />
                   </div>

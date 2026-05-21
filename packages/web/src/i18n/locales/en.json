@@ -84,6 +84,7 @@
     "trigger": "Share result",
     "items": {
       "webShare": "Share…",
+      "webShareWithPreview": "Share with preview",
       "copyLink": "Copy link",
       "x": "Share on X",
       "bluesky": "Share on Bluesky"
