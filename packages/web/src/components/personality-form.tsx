@@ -1,9 +1,11 @@
 import { createMemo, createResource, createSignal, Show } from 'solid-js';
+import { useWebCopy } from '../i18n/web-copy';
 import {
   getGeniusPath,
   getLocalizedPersonalityPreview,
   type LocalizedPersonalityPreview,
 } from '../lib/dantalion';
+import { formatHeading, normalizeNickname } from '../lib/heading';
 import { useLocale } from '../lib/locale-context';
 import {
   defaultBirthdayValue,
@@ -15,12 +17,14 @@ import {
 } from '../lib/personality-form';
 
 const minimumLoadingMs = 150;
+const nicknameMaxLength = 32;
 
 export type PersonalityFormProps = {
   loadPersonality?: PersonalityLoader;
 };
 
 type Submission = {
+  nickname: string | undefined;
   nonce: number;
   value: string;
 };
@@ -37,11 +41,13 @@ export type PersonalityLoader = (
 export function PersonalityForm(props: PersonalityFormProps) {
   const { language } = useLocale();
   const copy = createMemo(() => getPersonalityFormCopy(language()));
+  const webCopy = useWebCopy();
   const loadPersonality = () =>
     props.loadPersonality ??
     ((birthday: Date) => getLocalizedPersonalityPreview(birthday, language()));
 
   const [dateValue, setDateValue] = createSignal(defaultBirthdayValue);
+  const [nicknameValue, setNicknameValue] = createSignal('');
   const [submission, setSubmission] = createSignal<Submission>();
   const [result, { mutate }] = createResource(submission, async (request) => {
     const birthday = parseBirthdayValue(request.value);
@@ -69,14 +75,31 @@ export function PersonalityForm(props: PersonalityFormProps) {
       return;
     }
 
-    setSubmission({ nonce: Date.now(), value: dateValue() });
+    setSubmission({
+      nickname: normalizeNickname(nicknameValue(), nicknameMaxLength),
+      nonce: Date.now(),
+      value: dateValue(),
+    });
   };
 
   const handleReset = () => {
     setDateValue(defaultBirthdayValue);
+    setNicknameValue('');
     setSubmission(undefined);
     mutate(undefined);
   };
+
+  const personalizedHeading = createMemo(() => {
+    const current = submission();
+    if (!current) {
+      return copy().resultTitle;
+    }
+    return formatHeading(
+      webCopy().result.headingTemplate,
+      current.nickname,
+      webCopy().result.nicknameFallback,
+    );
+  });
 
   return (
     <section class="grid gap-6 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)]">
@@ -103,6 +126,29 @@ export function PersonalityForm(props: PersonalityFormProps) {
             </label>
             <p class="text-sm text-base-content/70" id="birthday-help">
               {copy().supportedRangeLabel}
+            </p>
+
+            <label class="form-control gap-2" for="nickname">
+              <span class="label-text text-sm font-medium">
+                {copy().nicknameLabel}
+              </span>
+              <input
+                aria-describedby="nickname-help"
+                autocomplete="nickname"
+                class="input input-bordered w-full"
+                id="nickname"
+                maxlength={nicknameMaxLength}
+                name="nickname"
+                onInput={(event) => {
+                  setNicknameValue(event.currentTarget.value);
+                }}
+                placeholder={copy().nicknamePlaceholder}
+                type="text"
+                value={nicknameValue()}
+              />
+            </label>
+            <p class="text-sm text-base-content/70" id="nickname-help">
+              {copy().nicknameHelp}
             </p>
 
             <Show when={validationMessage()}>
@@ -134,7 +180,7 @@ export function PersonalityForm(props: PersonalityFormProps) {
         <div aria-live="polite" class="card-body gap-5">
           <div class="flex items-center justify-between gap-3">
             <div>
-              <h2 class="card-title text-2xl">{copy().resultTitle}</h2>
+              <h2 class="card-title text-2xl">{personalizedHeading()}</h2>
               <p class="text-sm text-base-content/70">
                 {copy().emptyStateBody}
               </p>

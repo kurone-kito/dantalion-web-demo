@@ -12,6 +12,9 @@ export type PersonalityFormCopy = {
   emptyStateTitle: string;
   invalidRangeMessage: string;
   loadingLabel: string;
+  nicknameHelp: string;
+  nicknameLabel: string;
+  nicknamePlaceholder: string;
   resetLabel: string;
   resultTitle: string;
   submitLabel: string;

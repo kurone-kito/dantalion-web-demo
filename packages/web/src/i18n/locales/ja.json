@@ -15,10 +15,17 @@
     "emptyStateTitle": "結果プレビュー",
     "invalidRangeMessage": "1873-02-01 から 2050-12-31 の範囲で日付を選択してください。",
     "loadingLabel": "性格を読み込み中...",
+    "nicknameHelp": "このタブの中でのみ使用し、結果の見出しを個別表示するために用います。",
+    "nicknameLabel": "ニックネーム (任意)",
+    "nicknamePlaceholder": "名前またはエイリアス",
     "resetLabel": "リセット",
     "resultTitle": "性格結果",
     "submitLabel": "性格を見る",
     "supportedRangeLabel": "対応範囲: 1873-02-01 から 2050-12-31"
+  },
+  "result": {
+    "headingTemplate": "{{nickname}}さんの性格診断",
+    "nicknameFallback": "名無しの権兵衛"
   },
   "geniusPage": {
     "breadcrumbHomeLabel": "ホーム",

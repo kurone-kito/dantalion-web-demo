@@ -15,10 +15,17 @@
     "emptyStateTitle": "Result preview",
     "invalidRangeMessage": "Please pick a date between 1873-02-01 and 2050-12-31.",
     "loadingLabel": "Loading personality...",
+    "nicknameHelp": "Used only inside this tab to personalize the result heading.",
+    "nicknameLabel": "Nickname (optional)",
+    "nicknamePlaceholder": "Your name or alias",
     "resetLabel": "Reset",
     "resultTitle": "Personality result",
     "submitLabel": "Show personality",
     "supportedRangeLabel": "Supported range: 1873-02-01 to 2050-12-31"
+  },
+  "result": {
+    "headingTemplate": "{{nickname}}'s personality",
+    "nicknameFallback": "Anonymous"
   },
   "geniusPage": {
     "breadcrumbHomeLabel": "Home",
