@@ -11,3 +11,59 @@
 body {
   min-height: 100vh;
 }
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+
+  [data-print-hidden] {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  details {
+    display: block;
+  }
+
+  details > summary {
+    list-style: none;
+    pointer-events: none;
+  }
+
+  details[open],
+  details {
+    overflow: visible;
+  }
+
+  h1 {
+    font-size: 18pt;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  pre,
+  code {
+    background: #f5f5f5;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+}

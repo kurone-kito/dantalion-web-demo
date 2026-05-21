@@ -26,7 +26,10 @@ export function DemoShell(props: DemoShellProps) {
                 <h1 class="text-4xl font-bold">{copy().title}</h1>
                 <p class="max-w-3xl text-base-content/80">{copy().summary}</p>
               </div>
-              <div class="flex items-center gap-3 self-start">
+              <div
+                class="flex items-center gap-3 self-start"
+                data-print-hidden="true"
+              >
                 <ThemeToggle />
                 <LanguageSwitcher />
               </div>

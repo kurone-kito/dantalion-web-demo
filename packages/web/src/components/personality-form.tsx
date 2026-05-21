@@ -16,6 +16,7 @@ import {
   parseBirthdayValue,
 } from '../lib/personality-form';
 import { FileIdBadge } from './result/file-id-badge';
+import { PrintButton } from './result/print-button';
 import { SectionCard } from './result/section-card';
 
 const minimumLoadingMs = 150;
@@ -105,7 +106,7 @@ export function PersonalityForm(props: PersonalityFormProps) {
 
   return (
     <section class="grid gap-6 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)]">
-      <article class="card bg-base-100 shadow-xl">
+      <article class="card bg-base-100 shadow-xl" data-print-hidden="true">
         <div class="card-body gap-5">
           <form class="grid gap-4" onSubmit={handleSubmit}>
             <label class="form-control gap-2" for="birthday">
@@ -218,7 +219,13 @@ export function PersonalityForm(props: PersonalityFormProps) {
           >
             {(preview) => (
               <div class="grid gap-4">
-                <FileIdBadge genius={preview().genius} language={language()} />
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <FileIdBadge
+                    genius={preview().genius}
+                    language={language()}
+                  />
+                  <PrintButton />
+                </div>
                 <Show when={preview().introHtml}>
                   {(introHtml) => (
                     <div
@@ -235,7 +242,7 @@ export function PersonalityForm(props: PersonalityFormProps) {
                     />
                   )}
                 </For>
-                <div class="flex justify-end">
+                <div class="flex justify-end" data-print-hidden="true">
                   <a
                     class="btn btn-outline btn-sm"
                     href={getGeniusPath(language(), preview().genius)}
