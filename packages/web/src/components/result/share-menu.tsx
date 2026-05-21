@@ -3,7 +3,7 @@ import { useWebCopy } from '../../i18n/web-copy';
 import type { Genius, SupportedLanguage } from '../../lib/dantalion';
 import { formatHeading } from '../../lib/heading';
 import { canShareFiles, renderOgCard } from '../../lib/og-card';
-import { encodePermalink } from '../../lib/permalink';
+import { encodeShareUrl } from '../../lib/share-url';
 
 const SITE_ORIGIN_FALLBACK = 'https://kurone-kito.github.io/dantalion';
 
@@ -17,7 +17,6 @@ const resolveSiteOrigin = (): string => {
 };
 
 export type ShareMenuProps = {
-  birthday: string;
   genius: Genius;
   innerGenius?: Genius | undefined;
   language: SupportedLanguage;
@@ -37,10 +36,12 @@ export function ShareMenu(props: ShareMenuProps) {
   });
 
   const buildShareUrl = (): string => {
-    const path = encodePermalink({
-      birthday: props.birthday,
+    const path = encodeShareUrl({
+      innerGenius: props.innerGenius ?? props.genius,
       language: props.language,
       nickname: props.nickname,
+      outerGenius: props.outerGenius ?? props.genius,
+      workStyleGenius: props.workStyleGenius ?? props.genius,
     });
     return `${resolveSiteOrigin()}${path}`;
   };

@@ -53,8 +53,8 @@
       "purpose": "This site is a thin browser demo of `@kurone-kito/dantalion-core` and `@kurone-kito/dantalion-i18n`. Pick a birthday and the libraries compute the personality details client-side, then localize the rendered narrative in your language."
     },
     "privacy": {
-      "body": "Your birthday is processed entirely in this browser tab. Nothing is sent to a server or persisted off-device on its own.",
-      "shareNote": "Heads up: today the Share, Copy link, and X / Bluesky entries embed your birthday in the URL they hand off. Only use them with people you would tell your birthday to in person. A privacy-preserving share path is on the roadmap as v1.1.1.",
+      "body": "Your birthday is processed entirely in this browser tab. The Share, Copy link, and X / Bluesky entries hand off a URL that encodes the personality result, not the birthday — recipients can see the same result without learning when you were born.",
+      "shareNote": "The personal `?d=` URL in your address bar still contains the birthday so refreshing the tab restores your result. That URL never leaves the tab unless you copy and paste it yourself.",
       "title": "Privacy"
     },
     "repo": {

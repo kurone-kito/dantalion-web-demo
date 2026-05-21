@@ -15,10 +15,12 @@ export const English: Story = {
   render: () => (
     <LocaleProvider language="en">
       <ShareMenu
-        birthday="2000-01-01"
         genius="100"
+        innerGenius="100"
         language="en"
         nickname="Alice"
+        outerGenius="108"
+        workStyleGenius="125"
       />
     </LocaleProvider>
   ),
@@ -28,10 +30,12 @@ export const Japanese: Story = {
   render: () => (
     <LocaleProvider language="ja">
       <ShareMenu
-        birthday="2000-01-01"
         genius="100"
+        innerGenius="100"
         language="ja"
         nickname="アリス"
+        outerGenius="108"
+        workStyleGenius="125"
       />
     </LocaleProvider>
   ),
