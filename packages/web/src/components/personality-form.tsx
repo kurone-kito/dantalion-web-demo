@@ -1,4 +1,11 @@
-import { createMemo, createResource, createSignal, For, Show } from 'solid-js';
+import {
+  createMemo,
+  createResource,
+  createSignal,
+  For,
+  onMount,
+  Show,
+} from 'solid-js';
 import { useWebCopy } from '../i18n/web-copy';
 import {
   getGeniusPath,
@@ -7,6 +14,7 @@ import {
 } from '../lib/dantalion';
 import { formatHeading, normalizeNickname } from '../lib/heading';
 import { useLocale } from '../lib/locale-context';
+import { decodePermalink, encodePermalink } from '../lib/permalink';
 import {
   defaultBirthdayValue,
   getPersonalityFormCopy,
@@ -18,6 +26,7 @@ import {
 import { FileIdBadge } from './result/file-id-badge';
 import { PrintButton } from './result/print-button';
 import { SectionCard } from './result/section-card';
+import { ShareMenu } from './result/share-menu';
 
 const minimumLoadingMs = 150;
 const nicknameMaxLength = 32;
@@ -71,6 +80,22 @@ export function PersonalityForm(props: PersonalityFormProps) {
     isBirthdayInSupportedRange(dateValue()) ? null : copy().invalidRangeMessage,
   );
 
+  const submit = (request: { value: string; nickname: string | undefined }) => {
+    setSubmission({
+      nickname: request.nickname,
+      nonce: Date.now(),
+      value: request.value,
+    });
+    if (typeof window !== 'undefined' && window.history?.replaceState) {
+      const next = encodePermalink({
+        birthday: request.value,
+        language: language(),
+        nickname: request.nickname,
+      });
+      window.history.replaceState(window.history.state, '', next);
+    }
+  };
+
   const handleSubmit = (event: SubmitEvent) => {
     event.preventDefault();
 
@@ -78,12 +103,26 @@ export function PersonalityForm(props: PersonalityFormProps) {
       return;
     }
 
-    setSubmission({
+    submit({
       nickname: normalizeNickname(nicknameValue(), nicknameMaxLength),
-      nonce: Date.now(),
       value: dateValue(),
     });
   };
+
+  onMount(() => {
+    if (typeof window === 'undefined' || props.loadPersonality) {
+      return;
+    }
+    const { birthday, nickname } = decodePermalink(window.location.search);
+    if (!birthday) {
+      return;
+    }
+    setDateValue(birthday);
+    if (nickname) {
+      setNicknameValue(nickname);
+    }
+    submit({ nickname, value: birthday });
+  });
 
   const handleReset = () => {
     setDateValue(defaultBirthdayValue);
@@ -224,7 +263,18 @@ export function PersonalityForm(props: PersonalityFormProps) {
                     genius={preview().genius}
                     language={language()}
                   />
-                  <PrintButton />
+                  <div
+                    class="flex flex-wrap items-center gap-2"
+                    data-print-hidden="true"
+                  >
+                    <ShareMenu
+                      birthday={submission()?.value ?? dateValue()}
+                      genius={preview().genius}
+                      language={language()}
+                      nickname={submission()?.nickname}
+                    />
+                    <PrintButton />
+                  </div>
                 </div>
                 <Show when={preview().introHtml}>
                   {(introHtml) => (

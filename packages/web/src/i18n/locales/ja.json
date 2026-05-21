@@ -73,6 +73,18 @@
     "showDetails": "詳細を見る",
     "hideDetails": "詳細を閉じる"
   },
+  "share": {
+    "trigger": "共有する",
+    "items": {
+      "webShare": "共有…",
+      "copyLink": "リンクをコピー",
+      "x": "X で共有",
+      "bluesky": "Bluesky で共有"
+    },
+    "copiedToast": "パーマリンクをクリップボードにコピーしました",
+    "hookTemplate": "dantalion デモで、私の性格タイプは {{genius}} でした。",
+    "hashtag": "Dantalion性格診断"
+  },
   "geniusPage": {
     "breadcrumbHomeLabel": "ホーム",
     "ctaLabel": "診断トップへ戻る",
