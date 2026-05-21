@@ -23,6 +23,45 @@
     "submitLabel": "Show personality",
     "supportedRangeLabel": "Supported range: 1873-02-01 to 2050-12-31"
   },
+  "landing": {
+    "feature": {
+      "items": [
+        "Supports birthdays from 1873-02-01 through 2050-12-31.",
+        "Calculation and localized copy ship as separate packages so the CLI, web demo, and your own apps can reuse the same core.",
+        "Pure ESM modules targeting Node `^22.22.2 || >=24`, ready to bundle for modern browsers.",
+        "Ships TypeScript declarations alongside the runtime artifacts.",
+        "Available as both an installable CLI (`@kurone-kito/dantalion-cli`) and an embeddable library (`@kurone-kito/dantalion-core`)."
+      ],
+      "title": "Library highlights"
+    },
+    "hero": {
+      "subtitle": "Powered by the open-source dantalion library.",
+      "tagline": "Birthday-to-personality, in the browser."
+    },
+    "install": {
+      "cliCode": "npm install --global @kurone-kito/dantalion-cli\ndantalion personality 2000-01-01\ndantalion --help",
+      "cliHeading": "CLI",
+      "copyButtonLabel": "Copy",
+      "copyConfirmation": "Copied to clipboard",
+      "libraryCode": "npm install --save @kurone-kito/dantalion-core @kurone-kito/dantalion-i18n",
+      "libraryHeading": "As a library",
+      "subtitle": "Install the published dantalion packages on the `next` dist-tag for the modernized `v1.0.0-rc.x` line.",
+      "title": "Install"
+    },
+    "preface": {
+      "intro": "“Dantalion” is the seventy-first demon in [the Lesser Key of Solomon](https://en.wikipedia.org/wiki/The_Lesser_Key_of_Solomon). He teaches every kind of academic knowledge but also reads and steers the will of others.",
+      "purpose": "This site is a thin browser demo of `@kurone-kito/dantalion-core` and `@kurone-kito/dantalion-i18n`. Pick a birthday and the libraries compute the personality details client-side, then localize the rendered narrative in your language."
+    },
+    "privacy": {
+      "body": "Your birthday is processed entirely in this browser tab. Nothing is sent to a server, nothing is persisted off-device.",
+      "title": "Privacy"
+    },
+    "repo": {
+      "cta": "See the library on GitHub",
+      "href": "https://github.com/kurone-kito/dantalion",
+      "subtitle": "Open the source, file issues, or read the documentation."
+    }
+  },
   "result": {
     "headingTemplate": "{{nickname}}'s personality",
     "nicknameFallback": "Anonymous"
