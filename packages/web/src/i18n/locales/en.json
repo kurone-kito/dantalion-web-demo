@@ -63,6 +63,10 @@
     }
   },
   "result": {
+    "fileId": "Personality file",
+    "fileIdCopy": "Copy ID",
+    "fileIdCopyConfirmation": "ID copied to clipboard",
+    "fileIdHint": "A stable identifier for this personality. Click to open the detail page or use the copy button to share the ID.",
     "headingTemplate": "{{nickname}}'s personality",
     "nicknameFallback": "Anonymous"
   },
