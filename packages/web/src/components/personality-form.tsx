@@ -15,6 +15,7 @@ import {
   minBirthdayValue,
   parseBirthdayValue,
 } from '../lib/personality-form';
+import { FileIdBadge } from './result/file-id-badge';
 import { SectionCard } from './result/section-card';
 
 const minimumLoadingMs = 150;
@@ -217,6 +218,7 @@ export function PersonalityForm(props: PersonalityFormProps) {
           >
             {(preview) => (
               <div class="grid gap-4">
+                <FileIdBadge genius={preview().genius} language={language()} />
                 <Show when={preview().introHtml}>
                   {(introHtml) => (
                     <div
