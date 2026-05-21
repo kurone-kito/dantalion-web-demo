@@ -73,6 +73,13 @@
     "showDetails": "詳細を見る",
     "hideDetails": "詳細を閉じる"
   },
+  "geniusAxes": {
+    "title": "3 つの素質",
+    "subtitle": "状況に応じて現れる素質が異なります。本性が根底の性格、装いは相手を信用していないときに、集中は集中時や緊急時に現れます。",
+    "inner": "本性",
+    "outer": "装い",
+    "workStyle": "集中"
+  },
   "share": {
     "trigger": "共有する",
     "items": {

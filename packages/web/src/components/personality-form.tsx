@@ -24,6 +24,7 @@ import {
   parseBirthdayValue,
 } from '../lib/personality-form';
 import { FileIdBadge } from './result/file-id-badge';
+import { GeniusAxesPanel } from './result/genius-axes-panel';
 import { PrintButton } from './result/print-button';
 import { SectionCard } from './result/section-card';
 import { ShareMenu } from './result/share-menu';
@@ -276,6 +277,12 @@ export function PersonalityForm(props: PersonalityFormProps) {
                     <PrintButton />
                   </div>
                 </div>
+                <GeniusAxesPanel
+                  innerGenius={preview().innerGenius}
+                  language={language()}
+                  outerGenius={preview().outerGenius}
+                  workStyleGenius={preview().workStyleGenius}
+                />
                 <Show when={preview().introHtml}>
                   {(introHtml) => (
                     <div

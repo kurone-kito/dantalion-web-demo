@@ -73,6 +73,13 @@
     "showDetails": "Show details",
     "hideDetails": "Hide details"
   },
+  "geniusAxes": {
+    "title": "Three personalities",
+    "subtitle": "Each axis surfaces under different conditions — Inner is the baseline; Outer comes out when you do not trust the room; Work style shows under focus or urgency.",
+    "inner": "Inner",
+    "outer": "Outer",
+    "workStyle": "Work style"
+  },
   "share": {
     "trigger": "Share result",
     "items": {
