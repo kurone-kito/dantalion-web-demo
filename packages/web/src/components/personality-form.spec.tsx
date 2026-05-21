@@ -19,6 +19,14 @@ describe('PersonalityForm', () => {
       async (): Promise<LocalizedPersonalityPreview> => ({
         genius: '100',
         html: '<h2>Major categories of personality</h2>',
+        introHtml: '',
+        sections: [
+          {
+            bodyHtml: '<p>Test section body</p>',
+            heading: 'Major categories of personality',
+            id: 'major-categories-of-personality',
+          },
+        ],
       }),
     );
 
@@ -78,6 +86,8 @@ describe('PersonalityForm', () => {
       async (): Promise<LocalizedPersonalityPreview> => ({
         genius: '100',
         html: '<h2>Should not render</h2>',
+        introHtml: '',
+        sections: [],
       }),
     );
 
@@ -113,6 +123,8 @@ describe('PersonalityForm', () => {
             async (): Promise<LocalizedPersonalityPreview> => ({
               genius: '100',
               html: '<h2>unused</h2>',
+              introHtml: '',
+              sections: [],
             }),
           )}
         />
