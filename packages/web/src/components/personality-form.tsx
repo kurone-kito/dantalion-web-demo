@@ -1,4 +1,4 @@
-import { A } from '@solidjs/router';
+import { A, useNavigate } from '@solidjs/router';
 import {
   createMemo,
   createResource,
@@ -54,6 +54,7 @@ export type PersonalityLoader = (
 
 export function PersonalityForm(props: PersonalityFormProps) {
   const { language } = useLocale();
+  const navigate = useNavigate();
   const copy = createMemo(() => getPersonalityFormCopy(language()));
   const webCopy = useWebCopy();
   const loadPersonality = () =>
@@ -88,14 +89,12 @@ export function PersonalityForm(props: PersonalityFormProps) {
       nonce: Date.now(),
       value: request.value,
     });
-    if (typeof window !== 'undefined' && window.history?.replaceState) {
-      const next = encodePermalink({
-        birthday: request.value,
-        language: language(),
-        nickname: request.nickname,
-      });
-      window.history.replaceState(window.history.state, '', next);
-    }
+    const next = encodePermalink({
+      birthday: request.value,
+      language: language(),
+      nickname: request.nickname,
+    });
+    navigate(next, { replace: true, scroll: false });
   };
 
   const handleSubmit = (event: SubmitEvent) => {
