@@ -1,7 +1,29 @@
-import en from '../src/i18n/locales/en.json';
-import ja from '../src/i18n/locales/ja.json';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
-export const locales = { en, ja } as const;
+type Locale = {
+  geniusAxes: { inner: string; outer: string; workStyle: string };
+  personalityForm: { detailLinkLabel: string; submitLabel: string };
+  result: { fileId: string };
+  share: {
+    items: { copyLink: string };
+    trigger: string;
+  };
+};
+
+const loadLocale = (file: string): Locale =>
+  JSON.parse(
+    readFileSync(
+      fileURLToPath(new URL(`../src/i18n/locales/${file}`, import.meta.url)),
+      'utf8',
+    ),
+  ) as Locale;
+
+export const locales = {
+  en: loadLocale('en.json'),
+  ja: loadLocale('ja.json'),
+} as const;
+
 export type LocaleId = keyof typeof locales;
 
 export const submitLabel = (locale: LocaleId): string =>
