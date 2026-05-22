@@ -66,6 +66,13 @@ on `127.0.0.1:4173/dantalion/` before each invocation. Specs live in
 `packages/web/e2e/` and target the deploy-shaped base path so the
 checks mirror what `gh-pages` serves.
 
+The same suite runs as the `e2e (chromium)` job on every PR alongside
+`validate (Node 22.22.2)` / `validate (Node 24)`. Failing runs upload a
+`playwright-report` artefact (HTML report + per-spec trace, screenshot,
+video) under the workflow run's artefacts panel — download it to debug
+locally with `pnpm --filter @kurone-kito/dantalion-web-demo-web exec
+playwright show-report`.
+
 ## Component catalog
 
 `pnpm --filter @kurone-kito/dantalion-web-demo-web run story:dev` boots
