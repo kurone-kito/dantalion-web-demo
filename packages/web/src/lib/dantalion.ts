@@ -32,20 +32,18 @@ export const geniusTypeValues = geniusTypes.map(String);
 
 export const supportedLanguages = [...supportedLanguageValues];
 
-const accessorsCache = new Map<SupportedLanguage, Promise<Accessors>>();
 const supportedGeniusSet = new Set<string>(geniusTypeValues);
 
-const getAccessorsFor = (language: SupportedLanguage): Promise<Accessors> => {
-  const cached = accessorsCache.get(language);
-
-  if (cached) {
-    return cached;
-  }
-
-  const accessors = createAccessorsAsync(language);
-  accessorsCache.set(language, accessors);
-  return accessors;
-};
+// dantalion-i18n's `createAccessorsAsync(language)` calls `i18next.init({ lng })`
+// against the shared singleton. Caching the resulting Accessors bundle is unsafe
+// across languages — a later JA call mutates the singleton, and a subsequent EN
+// read against a cached Accessors bundle resolves through that polluted state.
+// Always re-resolve so the singleton is locked to the requested language before
+// `t()` runs. This is the durable fix for the prerender leak that #62 mitigated
+// with `crawlLinks: false` and #74 surfaced again in the legacy `/<N>.html`
+// aliases.
+const getAccessorsFor = (language: SupportedLanguage): Promise<Accessors> =>
+  createAccessorsAsync(language);
 
 export const getPersonalityFor = (birthday: Date): Personality => {
   const personality = getPersonality(birthday);
