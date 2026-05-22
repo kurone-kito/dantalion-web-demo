@@ -100,12 +100,7 @@ test.describe('share menu + permalink', () => {
     }
   });
 
-  // Static SSG ships only prerendered detail-page paths; the result-triple
-  // route is dynamic and not currently emitted as an HTML asset, so cold
-  // loads (the recipient path for X / Bluesky share links) land on the 404
-  // shell. Tracked in #72 — flipping this back to `test()` is the acceptance
-  // signal that the SPA fallback works.
-  test.fixme('visiting a result-triple URL renders the axis panel and per-axis bodies', async ({
+  test('visiting a result-triple URL renders the axis panel and per-axis bodies', async ({
     page,
   }) => {
     await page.goto('/dantalion/en/result/555-001-888/?n=Alice');
@@ -121,6 +116,7 @@ test.describe('share menu + permalink', () => {
     await expect(
       page.getByRole('link', { name: /^Work style\s+888$/u }),
     ).toBeVisible();
+    await expect(page).toHaveURL(/\/dantalion\/en\/result\/555-001-888\//u);
     expect(page.url()).not.toContain('?d=');
     expect(await page.locator('input#birthday').count()).toBe(0);
   });
