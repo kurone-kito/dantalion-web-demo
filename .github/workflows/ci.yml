@@ -67,7 +67,7 @@ jobs:
           key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             playwright-${{ runner.os }}-
-      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm --filter @kurone-kito/dantalion-web-demo-web exec playwright install --with-deps chromium
       - run: pnpm --filter @kurone-kito/dantalion-web-demo-web run test:e2e
       - if: failure()
         uses: actions/upload-artifact@v4
