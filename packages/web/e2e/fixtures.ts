@@ -2,7 +2,12 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 type Locale = {
+  demoPage: { title: string };
   geniusAxes: { inner: string; outer: string; workStyle: string };
+  landing: {
+    feature: { title: string };
+    install: { title: string };
+  };
   personalityForm: { detailLinkLabel: string; submitLabel: string };
   result: { fileId: string };
   share: {
