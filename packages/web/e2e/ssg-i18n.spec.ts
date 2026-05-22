@@ -132,11 +132,7 @@ test.describe('SSG + i18n parity', () => {
     expect(body).toContain('<html lang="en"');
   });
 
-  // The legacy /<N>.html aliases SSR with the polluted i18next singleton
-  // (see #74) and currently ship Japanese detail markdown under the
-  // EN-default chrome. Flipping this back to `test()` is the acceptance
-  // signal that #74 landed.
-  test.fixme('the legacy /100.html SSR ships the EN genius detail copy (no JA leak)', async ({
+  test('the legacy /100.html SSR ships the EN genius detail copy (no JA leak)', async ({
     request,
   }) => {
     const { body } = await fetchText(request, '/dantalion/100.html');
