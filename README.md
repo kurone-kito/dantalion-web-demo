@@ -24,7 +24,9 @@ used by GitHub Pages.
 This repository runs Issue-Driven Development from
 [`kurone-kito/idd-skill`](https://github.com/kurone-kito/idd-skill).
 Start with the canonical [AGENTS.md](./AGENTS.md) (or the relevant
-tool adapter, such as [`.github/copilot-instructions.md`](./.github/copilot-instructions.md)),
+entry adapter for your tool:
+[`CLAUDE.md`](./CLAUDE.md), [`GEMINI.md`](./GEMINI.md), or
+[`.github/copilot-instructions.md`](./.github/copilot-instructions.md),
 then follow [`docs/idd-workflow.md`](./docs/idd-workflow.md).
 
 ## License
