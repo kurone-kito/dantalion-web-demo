@@ -28,7 +28,7 @@
       "items": [
         "Supports birthdays from 1873-02-01 through 2050-12-31.",
         "Calculation and localized copy ship as separate packages so the CLI, web demo, and your own apps can reuse the same core.",
-        "Pure ESM modules targeting Node `^22.22.2 || >=24`, ready to bundle for modern browsers.",
+        "Pure ESM modules targeting Node `^22.23.2 || >=24`, ready to bundle for modern browsers.",
         "Ships TypeScript declarations alongside the runtime artifacts.",
         "Available as both an installable CLI (`@kurone-kito/dantalion-cli`) and an embeddable library (`@kurone-kito/dantalion-core`)."
       ],
