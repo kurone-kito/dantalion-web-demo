@@ -228,6 +228,11 @@ This repository runs Issue-Driven Development from
 - Trusted marker actor: `kurone-kito`.
 - The helper runtime profile is `instructions-only`.
 
+Before starting IDD work, manually open
+`.github/instructions/idd-overview.instructions.md`. Open the routed phase
+file manually when the current phase changes; non-Copilot tools must not
+rely on automatic loading of repository instruction files.
+
 To start an IDD-driven session, say:
 
 > Start the IDD workflow in this repository.

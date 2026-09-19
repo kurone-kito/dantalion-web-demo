@@ -49,8 +49,9 @@ source decision. It should not become a second policy source.
 
 The repository previously kept near-duplicate guidance in
 `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and
-`.github/copilot-instructions.md`, while describing the Copilot file as
-canonical. That layout made each policy change drift across entry files.
+`.github/copilot-instructions.md`, while treating the Copilot file as the
+primary guidance entry point. That layout made each policy change drift
+across entry files.
 The current structure follows the upstream template's dogfooding
 pattern: one canonical `AGENTS.md` with thin adapters, while retaining
 the project-specific IDD and workspace rules in the canonical file.
