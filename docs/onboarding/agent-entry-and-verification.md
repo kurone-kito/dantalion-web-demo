@@ -215,7 +215,8 @@ checks, confirm the detailed items below.
 - [ ] `GEMINI.md` exists and references `docs/idd-workflow.md`, unless
       the operator explicitly opted out of creating it.
 - [ ] `CLAUDE.md` and `GEMINI.md` import `@AGENTS.md` and retain a
-      literal reference to `docs/idd-workflow.md`.
+      literal reference to `docs/idd-workflow.md`, unless the operator
+      explicitly opted out of creating these entry files.
 - [ ] If `.github/copilot-instructions.md` existed before onboarding,
       it links to the canonical `AGENTS.md` and `docs/idd-workflow.md`
       without duplicating shared policy.
