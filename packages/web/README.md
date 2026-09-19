@@ -67,7 +67,7 @@ on `127.0.0.1:4173/dantalion/` before each invocation. Specs live in
 checks mirror what `gh-pages` serves.
 
 The same suite runs as the `e2e (chromium)` job on every PR alongside
-`validate (Node 22.23.2)` / `validate (Node 24)`. Failing runs upload a
+`validate (Node 22.22.2)` / `validate (Node 24)`. Failing runs upload a
 `playwright-report` artefact (HTML report + per-spec trace, screenshot,
 video) under the workflow run's artefacts panel — download it to debug
 locally with `pnpm --filter @kurone-kito/dantalion-web-demo-web exec
