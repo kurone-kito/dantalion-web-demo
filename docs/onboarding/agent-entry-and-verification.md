@@ -44,7 +44,7 @@ For the IDD entry path and phase routing, also read
 [docs/idd-workflow.md](docs/idd-workflow.md).
 ```
 
-The Copilot adapter uses the corresponding relative links:
+A Copilot adapter can use corresponding relative links, for example:
 
 ```markdown
 Read the canonical [AGENTS.md](../AGENTS.md) first. For IDD entry and

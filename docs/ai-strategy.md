@@ -16,8 +16,9 @@ adapters required by tools with different discovery behavior.
   imports `AGENTS.md` through a standalone `@AGENTS.md` directive.
 - [`.github/copilot-instructions.md`](../.github/copilot-instructions.md)
   is a thin Copilot adapter. Copilot can discover `AGENTS.md` directly,
-  so this file contains only Copilot's Plan-mode mapping and the entry
-  point to the IDD workflow.
+  so this file contains Copilot's Plan-mode mapping, the entry point to
+  the IDD workflow, and redirects to the canonical policy and strategy
+  docs.
 - [`docs/idd-workflow.md`](idd-workflow.md) explains the workflow's
   routing and file topology; the phase instruction files under
   `.github/instructions/` remain the operational authority.
