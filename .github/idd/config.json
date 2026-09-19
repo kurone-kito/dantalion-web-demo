@@ -1,8 +1,10 @@
 {
   "$schema": "https://kurone-kito.github.io/idd-skill/schemas/policy.schema.json",
-  "iddVersion": "0.1.0",
+  "iddVersion": "0.12.0",
   "markerPrefix": "dantalion-web-demo",
+  "developmentBranch": "main",
   "mergePolicy": "fully_autonomous_merge",
+  "mergePolicyAck": "fully_autonomous_merge",
   "reviewPolicy": "copilot-advisory",
   "threadResolutionPolicy": "fast-agent-resolve",
   "skipIssueAuthorApprovalGate": false,
@@ -12,6 +14,10 @@
     "heartbeatInterval": "PT12H"
   },
   "trustedMarkerActors": ["kurone-kito"],
+  "advisoryBotLogins": ["coderabbitai[bot]", "chatgpt-codex-connector[bot]"],
+  "workshop": {
+    "exampleRepository": ""
+  },
   "commands": {
     "install-deps": "corepack enable && pnpm install --frozen-lockfile",
     "fix-validate": "pnpm run lint:fix && pnpm run lint",
@@ -21,6 +27,37 @@
   "helperRuntime": {
     "profile": "instructions-only"
   },
-  "issueScope": "roadmap",
-  "orphanFirstPolicy": "none"
+  "issueScope": "roadmap-first",
+  "orphanFirstPolicy": "none",
+  "authoringLanguage": "en",
+  "issueAuthoring": {
+    "authoringLabelName": "status:authoring",
+    "authoringStaleAge": "PT4H"
+  },
+  "advisoryWait": {
+    "convergenceScope": "idd-claimed",
+    "convergenceDeadline": "PT9H",
+    "secondaryBotLogin": "coderabbitai[bot]",
+    "secondaryQuietWindow": "PT1H"
+  },
+  "discover": {
+    "selectionDesync": "session-offset"
+  },
+  "critiqueLoop": {
+    "deferAfterRounds": 5,
+    "telemetryHook": {
+      "command": "idd-critique-telemetry"
+    }
+  },
+  "forcedHandoff": {
+    "mode": "human-gated",
+    "authorityPolicy": "owners-and-maintainers-only"
+  },
+  "autopilotSuitability": {
+    "floor": 3
+  },
+  "worktreeGuard": {
+    "enabled": false
+  },
+  "ciGate": {}
 }
