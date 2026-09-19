@@ -68,10 +68,11 @@ For the IDD entry path and phase routing, also read
 [docs/idd-workflow.md](docs/idd-workflow.md).
 ```
 
-### AGENTS.md (for Codex CLI)
+### AGENTS.md (canonical source)
 
-`AGENTS.md` is the canonical source. Keep shared rules and the complete
-IDD workflow here, including the instruction that Codex CLI agents must
+`AGENTS.md` is the canonical source for shared guidance and the first
+entry file for Codex CLI. Keep shared rules and the complete IDD
+workflow here, including the instruction that Codex CLI agents must
 manually open `.github/instructions/idd-overview.instructions.md` and
 the routed phase file before starting IDD work.
 
