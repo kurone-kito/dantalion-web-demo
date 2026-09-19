@@ -11,72 +11,78 @@ This page is the detailed companion for:
 
 ## Agent entry files
 
-By default, leave the target repository with root entry files for every
-manually-routed non-Copilot agent named in `docs/idd-workflow.md`:
-`CLAUDE.md`, `AGENTS.md`, and `GEMINI.md`.
+By default, leave the target repository with `AGENTS.md` as the
+canonical, tool-neutral entry file and thin adapters for the manually
+routed non-Copilot agents named in `docs/idd-workflow.md`: `CLAUDE.md`
+and `GEMINI.md`. Keep the Copilot adapter under `.github/` as a separate
+thin entry point.
 
 Keep these rules explicit:
 
-- If the file already exists, append or adapt an IDD workflow section
-  without replacing unrelated repository guidance.
-- If the file is missing, create a minimal stub.
+- Keep shared rules, branch policy, and the full IDD workflow in
+  `AGENTS.md`; preserve unrelated repository guidance while reconciling
+  the canonical file.
+- Keep `CLAUDE.md` and `GEMINI.md` thin: import `@AGENTS.md` and retain a
+  literal `docs/idd-workflow.md` link for entry-point verification.
+- Keep `.github/copilot-instructions.md` as a short adapter linking to
+  `AGENTS.md` and `docs/idd-workflow.md`; do not duplicate shared rules.
+- If an entry file is missing, create the canonical file or the
+  appropriate thin adapter.
 - Only skip creating a missing root agent entry file when the operator
   explicitly opts out of adding new files.
 
-### Shared IDD workflow stub
+### Canonical entry layout
 
-All three root entry files should point agents to the same workflow
-entry path:
+The canonical file owns the shared guidance and IDD workflow. The
+non-Copilot adapters should import it and retain the literal workflow
+link needed by repository checks:
 
 ```markdown
-## IDD Workflow
+@AGENTS.md
 
-This project uses Issue-Driven Development (IDD) with parallel AI
-agents. Start with [docs/idd-workflow.md](docs/idd-workflow.md) for the
-cross-agent entry path and phase routing.
+For the IDD entry path and phase routing, also read
+[docs/idd-workflow.md](docs/idd-workflow.md).
+```
 
-Before starting IDD work, open
-`.github/instructions/idd-overview.instructions.md`. Open the routed
-phase file manually when the current step changes.
+A Copilot adapter can use corresponding relative links, for example:
+
+```markdown
+Read the canonical [AGENTS.md](../AGENTS.md) first. For IDD entry and
+phase routing, also read [docs/idd-workflow.md](../docs/idd-workflow.md).
 ```
 
 ### CLAUDE.md
 
-If `CLAUDE.md` already exists, add the shared IDD workflow section
-above and adapt the surrounding wording to the existing document style.
+If `CLAUDE.md` already exists, preserve unrelated guidance and add the
+thin `@AGENTS.md` import plus literal `docs/idd-workflow.md` link shown
+above. Do not copy the shared rules into the adapter.
 
 If `CLAUDE.md` does not exist, create a minimal file such as:
 
 ```markdown
 # Guidelines for AI Agents
 
-## Immediate rules
+@AGENTS.md
 
-- Match the conversational language to the user's language.
-- Write comments and documentation in English unless there is a clear
-  project-specific reason otherwise.
-- If uncertainty, hidden risk, or missing context blocks a safe change,
-  stop and ask a concise question before proceeding.
-
-## IDD Workflow
-
-This project uses Issue-Driven Development (IDD) with parallel AI
-agents. Start with [docs/idd-workflow.md](docs/idd-workflow.md) for the
-cross-agent entry path and phase routing.
-
-Before starting IDD work, open
-`.github/instructions/idd-overview.instructions.md`. Open the routed
-phase file manually when the current step changes.
+For the IDD entry path and phase routing, also read
+[docs/idd-workflow.md](docs/idd-workflow.md).
 ```
 
-### AGENTS.md (for Codex CLI)
+### AGENTS.md (canonical source)
 
-If `AGENTS.md` already exists, add the shared IDD workflow section and
-keep the wording explicit that Codex CLI agents should manually open
-`.github/instructions/idd-overview.instructions.md` and the routed
-phase file before starting IDD work.
+`AGENTS.md` is the canonical source for shared guidance and the first
+entry file for Codex CLI. Keep shared rules and the complete IDD
+workflow here, including the instruction that Codex CLI agents must
+manually open `.github/instructions/idd-overview.instructions.md` and
+the routed phase file before starting IDD work.
 
-If `AGENTS.md` does not exist, create a minimal file such as:
+If `AGENTS.md` does not exist, create the full canonical guide rather
+than a thin adapter. It must include the repository's shared rules,
+branch policy, and IDD workflow entry path.
+
+The following is an intentionally incomplete entry-path excerpt, not a
+replacement for the complete canonical guide. Extend it with the
+repository's branch, security, commit, validation, and policy guidance.
 
 ```markdown
 # Guidelines for AI Agents
@@ -102,42 +108,29 @@ phase file manually when the current step changes.
 
 ### GEMINI.md
 
-If `GEMINI.md` already exists, apply the same IDD workflow section as
-`AGENTS.md`, adapted to Gemini CLI's wording and still pointing to
-`docs/idd-workflow.md`.
+If `GEMINI.md` already exists, preserve unrelated guidance and add the
+thin `@AGENTS.md` import plus literal `docs/idd-workflow.md` link shown
+above. Do not copy the shared rules into the adapter.
 
-If `GEMINI.md` does not exist, create a minimal file such as:
+If `GEMINI.md` does not exist, create a thin adapter such as:
 
 ```markdown
 # Guidelines for AI Agents
 
-## Immediate rules
+@AGENTS.md
 
-- Match the conversational language to the user's language.
-- Write comments and documentation in English unless there is a clear
-  project-specific reason otherwise.
-- If uncertainty, hidden risk, or missing context blocks a safe change,
-  stop and ask a concise question before proceeding.
-
-## IDD Workflow
-
-This project uses Issue-Driven Development (IDD) with parallel AI
-agents. Start with [docs/idd-workflow.md](docs/idd-workflow.md) for the
-cross-agent entry path and phase routing.
-
-Before starting IDD work, open
-`.github/instructions/idd-overview.instructions.md`. Open the routed
-phase file manually when the current step changes.
+For the IDD entry path and phase routing, also read
+[docs/idd-workflow.md](docs/idd-workflow.md).
 ```
 
 ### .github/copilot-instructions.md (if present)
 
-If `.github/copilot-instructions.md` already exists, add a parallel IDD
-workflow section there as well so GitHub Copilot execution surfaces
-receive the same entry path. Keep the
-`excludeAgent: "code-review"` behavior in
-`.github/instructions/idd-overview.instructions.md`; repository-wide
-Copilot guidance may still apply during review.
+If `.github/copilot-instructions.md` already exists, keep it as a short
+adapter linking to `AGENTS.md` and `docs/idd-workflow.md` so GitHub
+Copilot execution surfaces receive the canonical entry path. Do not
+copy shared rules into it. Keep the `excludeAgent: "code-review"`
+behavior in `.github/instructions/idd-overview.instructions.md`;
+repository-wide Copilot guidance may still apply during review.
 
 ## Verification details
 
@@ -221,5 +214,9 @@ checks, confirm the detailed items below.
       the operator explicitly opted out of creating it.
 - [ ] `GEMINI.md` exists and references `docs/idd-workflow.md`, unless
       the operator explicitly opted out of creating it.
+- [ ] `CLAUDE.md` and `GEMINI.md` import `@AGENTS.md` and retain a
+      literal reference to `docs/idd-workflow.md`, unless the operator
+      explicitly opted out of creating these entry files.
 - [ ] If `.github/copilot-instructions.md` existed before onboarding,
-      it now includes the IDD workflow reference as well.
+      it links to the canonical `AGENTS.md` and `docs/idd-workflow.md`
+      without duplicating shared policy.
