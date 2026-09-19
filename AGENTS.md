@@ -1,7 +1,7 @@
 # Guidelines for AI Agents
 
 This project is **dantalion-web-demo** — the standalone repository for
-the modern web playground of `@kurone-kito/dantalion-core` and
+the modern Solid Start web playground of `@kurone-kito/dantalion-core` and
 `@kurone-kito/dantalion-i18n`. Its end state is a pnpm workspace that
 publishes a static demo to
 `https://kurone-kito.github.io/dantalion/`.
@@ -120,7 +120,16 @@ useful.
 - Prefer signed commits. If configured GPG signing is unavailable because
   of an interactive pinentry/TTY failure, make one bounded attempt with
   the repository's `git commit-ssh` alias before considering an unsigned
-  fallback. Do not permanently alter the user's signing configuration.
+  fallback. If that alias is unavailable, use a per-command SSH signing
+  configuration with a usable public signing key, for example:
+
+  ```sh
+  git -c gpg.format=ssh -c user.signingkey="<ssh-public-key>" commit -S
+  ```
+
+  Discover the key from the configured SSH key command or `ssh-add -L`; do
+  not invent a key path or permanently alter the user's signing
+  configuration.
 
 ## Coding standards
 

@@ -12,9 +12,10 @@ This page is the detailed companion for:
 ## Agent entry files
 
 By default, leave the target repository with `AGENTS.md` as the
-canonical, tool-neutral entry file and thin adapters for every manually
-routed agent named in `docs/idd-workflow.md`: `CLAUDE.md`, `AGENTS.md`,
-and `GEMINI.md`.
+canonical, tool-neutral entry file and thin adapters for the manually
+routed non-Copilot agents named in `docs/idd-workflow.md`: `CLAUDE.md`
+and `GEMINI.md`. Keep the Copilot adapter under `.github/` as a separate
+thin entry point.
 
 Keep these rules explicit:
 
