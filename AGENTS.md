@@ -120,9 +120,10 @@ useful.
   only on an unpublished branch when that keeps the history atomic.
 - Prefer signed commits. If configured GPG signing is unavailable because
   of an interactive pinentry/TTY failure, make one bounded attempt with
-  the repository's `git commit-ssh` alias before considering an unsigned
-  fallback. If that alias is unavailable, use a per-command SSH signing
-  configuration with a usable public signing key, for example:
+  the optional local `git commit-ssh` alias, when configured, before
+  considering an unsigned fallback. If that alias is unavailable, use a
+  per-command SSH signing configuration with a usable public signing key,
+  for example:
 
   ```sh
   git -c gpg.format=ssh -c user.signingkey="<ssh-public-key>" commit -S
