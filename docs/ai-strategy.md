@@ -24,11 +24,11 @@ adapters required by tools with different discovery behavior.
 
 ## Change policy
 
-`AGENTS.md` is the source of truth for shared rules. Adapters exist only
-to get that content in front of tools that would otherwise miss it — do
-not duplicate project guidance into them. When a rule needs
-tool-specific vocabulary, keep the neutral rule in `AGENTS.md` and put
-the vocabulary mapping in that tool's adapter.
+`AGENTS.md` is the source of truth for shared rules. Adapters make that
+content discoverable across tool entry points and provide tool-specific
+vocabulary or mode mapping — do not duplicate project guidance into
+them. When a rule needs tool-specific vocabulary, keep the neutral rule
+in `AGENTS.md` and put the vocabulary mapping in that tool's adapter.
 
 When IDD policy changes, update `.github/idd/config.json`, the owning
 phase instructions, and `docs/idd-policy.md` as required by the policy

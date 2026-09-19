@@ -8,9 +8,10 @@ publishes a static demo to
 
 This file is the canonical, tool-neutral instruction source for AI
 agents. `CLAUDE.md`, `GEMINI.md`, and
-`.github/copilot-instructions.md` are entry-point adapters for tools that
-need additional discovery help; keep shared guidance here first. The
-reason for this layout is recorded in [`docs/ai-strategy.md`](docs/ai-strategy.md).
+`.github/copilot-instructions.md` are entry-point adapters for tools with
+different discovery behavior or tool-specific vocabulary and mode
+mapping; keep shared guidance here first. The reason for this layout is
+recorded in [`docs/ai-strategy.md`](docs/ai-strategy.md).
 
 When contributing to this repository with an AI agent, preserve the
 project's IDD workflow and established repository policy. Read the
