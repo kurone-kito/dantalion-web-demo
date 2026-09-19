@@ -68,9 +68,11 @@ fallback without a lockfile. The active repository profile remains
 - `orphanFirstPolicy`: `none`
 - `discover.selectionDesync`: `session-offset`
 
-The imported `roadmap-first` scope permits the orphan fallback only when
-the roadmap has no eligible work; this repository keeps that fallback
-disabled through `orphanFirstPolicy: none`.
+The imported `roadmap-first` scope permits the orphan fallback when the
+roadmap path yields no viable, startable, unclaimed candidate. The
+`orphanFirstPolicy: none` value does not disable that fallback; it only
+applies no additional orphan-first approval gate, so A0-O remains available
+for that roadmap-first fallback.
 
 ## Worktree Guard Profile
 
