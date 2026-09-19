@@ -129,6 +129,10 @@ useful.
   git -c gpg.format=ssh -c user.signingkey="<ssh-public-key>" commit -S
   ```
 
+  If both SSH signing paths fail, use `git commit --no-gpg-sign ...` for
+  the current commit as the explicit unsigned fallback; do not repeat the
+  failed GPG attempt.
+
   Discover the key from the configured SSH key command or `ssh-add -L`; do
   not invent a key path or permanently alter the user's signing
   configuration.
