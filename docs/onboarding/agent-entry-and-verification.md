@@ -79,6 +79,10 @@ If `AGENTS.md` does not exist, create the full canonical guide rather
 than a thin adapter. It must include the repository's shared rules,
 branch policy, and IDD workflow entry path.
 
+The following is an intentionally incomplete entry-path excerpt, not a
+replacement for the complete canonical guide. Extend it with the
+repository's branch, security, commit, validation, and policy guidance.
+
 ```markdown
 # Guidelines for AI Agents
 
