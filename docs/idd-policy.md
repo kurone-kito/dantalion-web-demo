@@ -62,6 +62,24 @@ profiles that lack an immutable helper pin, and it refuses an npm
 fallback without a lockfile. The active repository profile remains
 `instructions-only` until #81 adopts the pinned package-manager runtime.
 
+## Discovery Profile
+
+- `issueScope`: `roadmap-first`
+- `orphanFirstPolicy`: `none`
+- `discover.selectionDesync`: `session-offset`
+
+The imported `roadmap-first` scope permits the orphan fallback only when
+the roadmap has no eligible work; this repository keeps that fallback
+disabled through `orphanFirstPolicy: none`.
+
+## Worktree Guard Profile
+
+The upstream `.githooks/` guard files are imported, but
+`worktreeGuard.enabled` remains `false` until #83 chains them through
+the existing Husky hooks. This prevents the policy from claiming
+protection while direct `core.hooksPath` activation would bypass the
+repository's `lint-staged` and commitlint hooks.
+
 ## Claim Timing
 
 - **claim-stale-age**: 24 h

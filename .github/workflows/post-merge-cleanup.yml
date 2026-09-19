@@ -286,6 +286,11 @@ jobs:
             echo "::warning::Multiple package-manager lockfiles were found with no declared \"packageManager\" field in package.json; refusing to guess which one to use. Add a \"packageManager\": \"<name>@<version>\" field to package.json, or remove the stale lockfile(s)."
           fi
           echo "manager=$MANAGER" >> "$GITHUB_OUTPUT"
+      - name: Reject ambiguous package manager
+        if: steps.profile.outputs.profile == 'package-manager' && steps.manager.outputs.manager == 'ambiguous'
+        run: |
+          echo "::error::The package-manager cleanup profile could not identify a single package manager; refusing to skip dependency setup and F4 cleanup."
+          exit 1
       - name: Install dependencies (package-manager profile)
         if: steps.profile.outputs.profile == 'package-manager' && steps.manager.outputs.manager != 'ambiguous'
         env:
