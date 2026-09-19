@@ -39,16 +39,12 @@
 #     content, but it is a wider execution surface than this source
 #     repository's own dogfooded copy (which only ever runs its single
 #     tracked `scripts/audit-pr-cleanup.mjs`), so it is called out here
-#     explicitly. Under `ephemeral-npx` specifically, when the repository
-#     has not configured `helperRuntime.packageSpec`, the invocation
-#     falls back to fetching a **mutable** default archive URL
-#     (`https://codeload.github.com/kurone-kito/idd-skill/tar.gz/refs/heads/main`)
-#     over the network at run time -- not base-branch-tracked content and
-#     not a declared dependency either. This is a real, wider execution
-#     surface than the other profiles; adopters on `ephemeral-npx` should
-#     pin `helperRuntime.packageSpec` to a reviewed tarball or mirror URL
-#     (see docs/idd-helper-scripts.md's "Profile Wiring Surface" section)
-#     to close this gap.
+#     explicitly. Under `ephemeral-npx` specifically,
+#     `helperRuntime.packageSpec` is required. The workflow fails closed
+#     before invoking `npx` when no immutable helper spec is configured,
+#     so it never fetches executable code from a mutable branch URL at
+#     run time. Adopters must pin a reviewed tarball or mirror URL (see
+#     docs/idd-helper-scripts.md's "Profile Wiring Surface" section).
 #   - The `pr_number` value (a `workflow_dispatch` number input, not
 #     strictly enforced as numeric for direct API dispatches) is passed
 #     through `env:` and referenced as a quoted shell variable, never
@@ -232,6 +228,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+      - name: Require immutable ephemeral helper pin
+        if: steps.profile.outputs.profile == 'ephemeral-npx' && steps.profile.outputs.package-spec == ''
+        run: |
+          echo "::error::helperRuntime.packageSpec is required for the ephemeral-npx post-merge cleanup profile; refusing to execute mutable upstream code."
+          exit 1
       - name: Detect package manager
         id: manager
         if: steps.profile.outputs.profile == 'package-manager'
@@ -300,6 +301,10 @@ jobs:
               yarn install --frozen-lockfile
               ;;
             *)
+              if [ ! -f package-lock.json ] && [ ! -f npm-shrinkwrap.json ]; then
+                echo "::error::The package-manager cleanup profile selected npm but no package-lock.json or npm-shrinkwrap.json exists; refusing to run npm ci."
+                exit 1
+              fi
               npm ci
               ;;
           esac

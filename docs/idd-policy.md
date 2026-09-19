@@ -43,6 +43,25 @@ The telemetry hook is fire-and-forget. This repository remains on the
 `instructions-only` helper profile, so the hook is advisory until the
 package-manager runtime track is adopted.
 
+## Advisory-Wait Profile
+
+**Profile**: upstream dogfooding overrides
+
+- `convergenceScope`: `idd-claimed`
+- `convergenceDeadline`: `PT9H`
+- `secondaryBotLogin`: `coderabbitai[bot]`
+- `secondaryQuietWindow`: `PT1H`
+
+These values keep advisory convergence scoped to claimed IDD work and
+give the configured secondary reviewer a bounded quiet window. The
+repository still requires live actor and check-identity evidence before
+enabling any external-check waiver; that evidence remains in #109.
+
+The imported post-merge cleanup workflow also fails closed for runnable
+profiles that lack an immutable helper pin, and it refuses an npm
+fallback without a lockfile. The active repository profile remains
+`instructions-only` until #81 adopts the pinned package-manager runtime.
+
 ## Claim Timing
 
 - **claim-stale-age**: 24 h
