@@ -11,6 +11,9 @@ on:
 permissions:
   contents: read
 
+env:
+  PNPM_CONFIG_ENABLE_GLOBAL_VIRTUAL_STORE: 'false'
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
@@ -27,13 +30,20 @@ jobs:
           - 22.22.2
           - 24
     steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: pnpm/action-setup@v6
         with:
           run_install: false
       - uses: actions/setup-node@v6
         with:
           cache: pnpm
+          check-latest: true
           node-version: ${{ matrix.node-version }}
       - run: corepack enable
       - env:
@@ -48,13 +58,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: pnpm/action-setup@v6
         with:
           run_install: false
       - uses: actions/setup-node@v6
         with:
           cache: pnpm
+          check-latest: true
           node-version: 24
       - run: corepack enable
       - env:
