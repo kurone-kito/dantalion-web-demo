@@ -26,7 +26,7 @@ This repository runs Issue-Driven Development from
 Start with the canonical [AGENTS.md](./AGENTS.md) (or the relevant
 entry adapter for your tool:
 [`CLAUDE.md`](./CLAUDE.md), [`GEMINI.md`](./GEMINI.md), or
-[`.github/copilot-instructions.md`](./.github/copilot-instructions.md),
+[`.github/copilot-instructions.md`](./.github/copilot-instructions.md)),
 then follow [`docs/idd-workflow.md`](./docs/idd-workflow.md).
 
 ## License
