@@ -430,12 +430,12 @@ For repositories that vendor the IDD helper scripts, hosting the
 workflow turns "Copilot's review converged on the current PR HEAD" from
 an instruction the execution model must choose to honor into a
 status check GitHub itself can enforce. It is opt-in — the template
-already mirrors the workflow at
-[`idd-template/.github/workflows/idd-advisory-convergence.yml`](../../.github/workflows/idd-advisory-convergence.yml)
+already publishes the workflow at
+[`idd-advisory-convergence.yml`](https://github.com/kurone-kito/idd-skill/blob/5c2704a1b50901f29d87865002047b1eb491865e/idd-template/.github/workflows/idd-advisory-convergence.yml)
 and its comment-refresh companion
-[`idd-template/.github/workflows/idd-advisory-convergence-comment.yml`](../../.github/workflows/idd-advisory-convergence-comment.yml);
-copy both files into your repository's `.github/workflows/` to
-enable it. Register only the required job id
+[`idd-advisory-convergence-comment.yml`](https://github.com/kurone-kito/idd-skill/blob/5c2704a1b50901f29d87865002047b1eb491865e/idd-template/.github/workflows/idd-advisory-convergence-comment.yml);
+copy both files from that pinned upstream source into your
+repository's `.github/workflows/` to enable it. Register only the required job id
 `idd-advisory-convergence` as a status check — the companion is
 non-required. They are not wired in automatically by importing the
 rest of `idd-template/`, since adding a new required-status-check-able

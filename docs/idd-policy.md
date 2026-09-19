@@ -34,7 +34,14 @@ the explicit follow-up work in #109 and #110.
 
 ## Critique-Loop Profile
 
-**Profile**: distributed defaults
+**Profile**: upstream dogfooding overrides
+
+- `deferAfterRounds`: 5
+- `telemetryHook.command`: `idd-critique-telemetry`
+
+The telemetry hook is fire-and-forget. This repository remains on the
+`instructions-only` helper profile, so the hook is advisory until the
+package-manager runtime track is adopted.
 
 ## Claim Timing
 
