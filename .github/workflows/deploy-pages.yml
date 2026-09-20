@@ -16,6 +16,9 @@ on:
 permissions:
   contents: read
 
+env:
+  NPM_CONFIG_ENABLE_GLOBAL_VIRTUAL_STORE: 'false'
+
 concurrency:
   group: dantalion-web-demo-gh-pages
   cancel-in-progress: true
@@ -26,7 +29,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v6
         with:
@@ -35,6 +44,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           cache: pnpm
+          check-latest: true
           node-version: 24
 
       - run: corepack enable
@@ -86,6 +96,7 @@ jobs:
 
           short_sha="$(git -C "$GITHUB_WORKSPACE" rev-parse --short "$SOURCE_SHA")"
           git commit \
+            --no-gpg-sign \
             -m "deploy: dantalion-web-demo @ ${short_sha}" \
             -m "Co-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           git push origin gh-pages
