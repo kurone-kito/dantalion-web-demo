@@ -42,8 +42,22 @@ const supportedGeniusSet = new Set<string>(geniusTypeValues);
 // `t()` runs. This is the durable fix for the prerender leak that #62 mitigated
 // with `crawlLinks: false` and #74 surfaced again in the legacy `/<N>.html`
 // aliases.
-const getAccessorsFor = (language: SupportedLanguage): Promise<Accessors> =>
-  createAccessorsAsync(language);
+const getAccessorsFor = async (
+  language: SupportedLanguage,
+): Promise<Accessors> => {
+  // @solidjs/router's `createAsync` replaces the global `Promise` (and
+  // `fetch`) with a non-functional stub for the synchronous portion of a
+  // resource fetcher's first call during hydration, to suppress a
+  // redundant client-side refetch of already-serialized SSR data. `await`
+  // on a plain value always resolves through the realm's intrinsic
+  // `%Promise%`, not the mutable global binding, so this yields past that
+  // window before `createAccessorsAsync` reaches `i18next.init()`, which
+  // constructs its own internal bookkeeping `new Promise(...)` — under the
+  // stub that promise's `resolve`/`reject` are never captured, throwing
+  // `i.resolve is not a function` during hydration (#79).
+  await undefined;
+  return createAccessorsAsync(language);
+};
 
 export const getPersonalityFor = (birthday: Date): Personality => {
   const personality = getPersonality(birthday);
