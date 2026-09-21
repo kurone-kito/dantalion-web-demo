@@ -1,3 +1,4 @@
+allowCompoundWords: true
 cache:
   cacheFormat: universal
   cacheLocation: node_modules/.cache/cspell/.cspell.cache
@@ -5,18 +6,73 @@ cache:
   useCache: true
 import:
   - '@kurone-kito/cspell-config'
+dictionaries:
+  - cpp
+  - en_US
+  - en-gb
+  - fullstack
+  - git
+  - markdown
+  - misc
+  - shellscript
+  - softwareTerms
+enableGlobDot: true
+features:
+  weighted-suggestions: true
+globRoot: ${cwd}
+ignorePaths:
+  - .*ignore
+  - .git
+  - .github/CODE_OF_CONDUCT.*
+  - .vscode/extensions.json
+  - pnpm-lock.yaml
+language: en,ja
+useGitignore: true
+version: '0.2'
 words:
   - DesctiptionsType
+  - desync
+  - desynced
   - esync
+  - idd
   - iddVersion
   - isort
   - Kaku
+  - kito
+  - Kiro
+  - kuron
+  - kurone
+  - kuroné
   - Meiryo
-  - pyproject
+  - ONNX
   - pylint
   - pytest
-  - unreplied
+  - pyproject
+  - qwen
+  - TOCTOU
+  - tsfile
+  - undispositioned
+  - unioned
+  - unmigrated
+  - unmirrored
   - unpushed
-  - waivable
+  - unreplied
+  - unrouted
+  - unscored
+  - unwaived
   - vinxi
-version: '0.2'
+  - Esync
+  - minimizable
+  - waivable
+  - rollup
+  - GHEC
+  - GHES
+  - WHATWG
+  - dedup
+  - deprioritize
+  - dofork
+  - ministral
+  - nektos
+  - nvmrc
+  - remediations
+  - vrchat

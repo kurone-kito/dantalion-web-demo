@@ -258,6 +258,16 @@ $RECYCLE.BIN/
 
 ### THE PROJECT SPECIFIES #################################################
 
+### AI Agents ###
+# OpenAI Codex sandbox
+.codex/
+
+### NeoVim ###
+# Project-local NeoVim config, loaded via the opt-in `exrc` option
+.nvim.lua
+.nvimrc
+.exrc
+
 packages/**/.output/
 packages/**/.vinxi/
 packages/**/app.config.timestamp_*.js

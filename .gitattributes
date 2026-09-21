@@ -1,3 +1,9 @@
+# Normalize line endings
+* text=auto eol=lf
+
+# Binary files used by this repository
+*.png binary
+
 .coderabbit.yaml export-ignore
 .git* export-ignore
 .husky/** export-ignore
